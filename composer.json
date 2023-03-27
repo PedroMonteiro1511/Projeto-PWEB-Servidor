@@ -1,0 +1,12 @@
+{
+    "name": "pedro/pweb",
+    "autoload": {
+        "psr-4": {
+            "Pedro\\Pweb\\": "src/"
+        }
+    },
+    "require": {
+        "php-activerecord/php-activerecord": "dev-master"
+    },
+    "minimum-stability": "dev"
+}
