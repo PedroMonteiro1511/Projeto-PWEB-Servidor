@@ -2,3 +2,76 @@
 body{
     background : white;
 }
+
+/* Css da navBar */
+
+.navbar{
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.nav-item{
+    padding-right: .5rem;
+}
+
+/* Css do Footer */
+
+ footer {
+     position: fixed;
+     left: 0;
+     bottom: 0;
+     width: 100%;
+     background-color: red;
+     color: white;
+     text-align: center;
+ }
+
+/*  Css Geral da Aplicação  */
+
+body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+}
+
+main {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1rem;
+    text-align: justify;
+}
+
+main h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+main p {
+    margin-bottom: 1rem;
+}
+
+button {
+    display: inline-block;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+}
