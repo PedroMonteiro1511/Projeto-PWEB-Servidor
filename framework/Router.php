@@ -1,12 +1,14 @@
 <?php
 
+use app\controllers\SiteController;
 use app\controllers\AuthController;
-use app\controllers\HomeController;
-class Router {
+class Router
+{
     /**
      * Route the request to the appropriate controller and action.
      */
-    public function route() {
+    public function route()
+    {
         // Load the routes from the routes.php file
         $routes = require('routes.php');
         // Get the controller and action from the query string
@@ -22,7 +24,7 @@ class Router {
         if (!(isset($routes[$controllerPrefix][$action])) && !(isset($routes[$route]))) {
             die('ROUTER: Rota inválida! \'' . $route . '\'!');
         }
-        if($route === 'defaultRoute'){
+        if ($route === 'defaultRoute') {
             list($acceptedMethods, $controllerName, $action) = $routes[$route];
         } else {
             // Get the accepted HTTP methods, controller name, and action for the route
@@ -37,7 +39,7 @@ class Router {
         $params = $_GET;
         unset($params['c'], $params['a']);
         // Create an instance of the controller and call the specified action
-        $controllerName = 'app\\controllers\\'. $controllerName;
+        $controllerName = 'app\\controllers\\' . $controllerName;
         $controller = new $controllerName;
         call_user_func_array([$controller, $action], $params);
     }

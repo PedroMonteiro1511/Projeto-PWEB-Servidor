@@ -1,15 +1,18 @@
 <?php
 
-require_once 'controllers/HomeController.php';
+require_once 'controllers/BaseController.php';
+require_once 'controllers/SiteController.php';
 require_once 'controllers/AuthController.php';
 
 return [
 
-    'defaultRoute' => ['GET', 'AuthController', 'index'],
-    'auth' => ['GET', 'AuthController', 'index'],
-    'home' => [
-        'index' => ['GET', 'HomeController', 'index']
-    ,]
-
+    'defaultRoute' => ['GET', 'SiteController', 'index'],
+    //'auth' => ['GET', 'AuthController', 'index'],
+    'site' => [
+        'index' => ['GET', 'SiteController', 'index'],
+        'create' =>['GET', 'SiteController', 'create'],
+        'signup' =>['GET|POST', 'SiteController', 'signup'],
+        'login' =>['GET|POST', 'SiteController', 'login'],
+        ]
 ];
 
