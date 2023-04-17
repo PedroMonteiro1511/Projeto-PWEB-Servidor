@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
-    <link rel="stylesheet" href="\_Git\Projeto-PWEB-Servidor\public\css\style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="public/css/style.css">
 
 </head>
 <body>
     <header>
+        <link rel="stylesheet" type="text/css" href="../../public/css/style.css">
         <div>
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <a class="navbar-brand" href="index.php?c=site&a=index">NOME DA APP</a>

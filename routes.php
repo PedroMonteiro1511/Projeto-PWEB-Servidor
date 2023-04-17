@@ -13,6 +13,6 @@ return [
         'create' =>['GET', 'SiteController', 'create'],
         'signup' =>['GET|POST', 'SiteController', 'signup'],
         'login' =>['GET|POST', 'SiteController', 'login'],
-        ]
+    ]
 ];
 
