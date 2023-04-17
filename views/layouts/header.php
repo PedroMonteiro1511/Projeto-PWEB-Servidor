@@ -28,11 +28,11 @@
                 <div class="my-2 my-lg-0" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a href=""><button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Registo</button></a>
+                            <a href="index.php?c=site&a=signup"><button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Registo</button></a>
                         </li>
 
                         <li class="nav-item">
-                            <a href=""> <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button> </a>
+                            <a href="index.php?c=site&a=login"> <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button> </a>
                         </li>
                     </ul>
                 </div>
