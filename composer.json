@@ -1,4 +1,6 @@
 {
     "name": "pedro/pweb",
-    "require": {}
+    "require": {
+        "php-activerecord/php-activerecord": "^1.2"
+    }
 }
