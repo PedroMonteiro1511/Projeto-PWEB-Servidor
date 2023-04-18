@@ -2,6 +2,7 @@
 
 class Auth
 {
+
     public function __construct()
     {
         session_start();
@@ -9,27 +10,37 @@ class Auth
 
     public function checkAuth($username, $password): bool
     {
-        $usernameDB = "t";
-        $passwordDB = "t";
+        $users = User::all();
 
-        if ($username == $usernameDB && $password == $passwordDB) {
-            $_SESSION["username"] = $username;
-            return true;
+        foreach ($users as $user){
+
+            $usernameDB = $user->username;
+            $passwordDB = $user->password;
+
+            if ($username == $usernameDB && $password == $passwordDB) {
+                $_SESSION["username"] = $user->username;
+                $_SESSION["active_user_id"] = $user->id;
+                return true;
+            }
+            else{
+                return false;
+            }
         }
         return false;
     }
 
     public function isLoggedIn(): bool
     {
-        if (isset($_SESSION["username"])) {
+        if (isset($_SESSION["active_user_id"])) {
             return true;
         }
 
         return false;
     }
 
-    public function Logout()
+    public function logout()
     {
+        session_unset();
         session_destroy();
     }
 }

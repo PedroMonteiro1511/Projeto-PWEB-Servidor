@@ -13,13 +13,25 @@ class AuthController extends \BaseController
 
             //valida username e pass
             $auth = new Auth();
-            if (!$auth->checkAuth($username, $password)) {
-                return $this->renderView("auth/login", ['errorMessage' => 'Login inválido']);
+            if ($auth->checkAuth($username, $password)) {
+                return $this->renderView("site/index", ['errorMessage' => 'Login funcionou!']);
+            }
+            else{
+                return $this->renderView("auth/login", ['errorMessage' => 'Login Inválido, Por favord tente novamente.']);
             }
 
-            return $this->renderView("site/index");
         } else {
-            return $this->renderView("auth/login");
+            // Para teste
+            return $this->renderView("auth/login", ['errorMessage' => 'Não está a passar dados']);
         }
+    }
+
+    public function signout(){
+        $auth = new Auth();
+
+
+        $auth->logout();
+
+        return $this->renderView("auth/login");
     }
 }
