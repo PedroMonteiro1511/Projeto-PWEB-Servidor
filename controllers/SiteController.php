@@ -2,7 +2,9 @@
 
 namespace app\controllers;
 
-include_once 'models/Auth.php';
+use User;
+
+//include_once 'models/Auth.php';
 
 class SiteController extends \BaseController
 {
@@ -21,30 +23,46 @@ class SiteController extends \BaseController
 
     public function signup()
     {
+        if (isset($_POST["username"]) && isset($_POST["email"]) && isset($_POST["password"])
+            && isset($_POST["telefone"]) && isset($_POST["nif"]) && isset($_POST["morada"])
+            && isset($_POST["codPostal"]) && isset($_POST["localidade"])) {
 
-        if (isset($_POST["name"]) && isset($_POST["email"]) && isset($_POST["password"])) {
-            $var = $_POST["name"];
-            $this->renderView("site/signup", ['message' => $var]);
-        } else {
-            $this->renderView("site/signup");
-        }
-    }
+            //echo var_dump($_POST);
+            //Declarar atributos a passar no modelo user
+            $attributes = array(
+                'username' => $_POST["username"],
+                'password' => $_POST["password"],
+                'email' => $_POST["email"],
+                'telefone' => (int)$_POST["telefone"],
+                'nif' => (int)$_POST["nif"],
+                'morada' => $_POST["morada"],
+                'codpostal' => $_POST["codPostal"],
+                'localidade' => $_POST["localidade"],
+                'role' => "Cliente"
+            );
 
-    public function login()
-    {
-        if (isset($_POST["username"]) && isset($_POST["password"])) {
+            //$attributes = $_POST;
 
-            $username = $_POST["username"];
-            $password = $_POST["password"];
+            //echo var_dump($attributes);
+            //criar user
+            $user = new User($attributes);
 
-            //valida username e pass
-            if (!checkAuth($username, $password)) {
-                return $this->renderView("site/login", ['errorMessage' => 'Login inválido']);
+            //validar
+            if ($user->is_valid()) {
+                //$attributes['password'] = md5($_POST["password"]);
+                //$user->update_attribute('password', md5($_POST["password"]));
+
+                $user->save(false); //isValid já validou não precisa de validar de novo no save
+                return $this->renderView("auth/login");
             }
 
-            $this->renderView("site/index");
+            //Obtem os erros do validate
+            $erros = $user->errors;
+           // $erros = $erros;
+            return $this->renderView("site/signup", ['errorsMessage' => $erros]);
+
         } else {
-            $this->renderView("site/login");
+            return $this->renderView("site/signup");
         }
     }
 }

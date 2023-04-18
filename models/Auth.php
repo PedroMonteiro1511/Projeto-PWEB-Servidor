@@ -1,30 +1,35 @@
 <?php
-function checkAuth($username, $password) : bool
-{
-    $usernameDB = "t";
-    $passwordDB = "t";
 
-    if ($username == $usernameDB && $password == $passwordDB) {
+class Auth
+{
+    public function __construct()
+    {
         session_start();
-        $_SESSION["username"] = "testeUser";
-
-        return true;
     }
 
-    return false;
-}
+    public function checkAuth($username, $password): bool
+    {
+        $usernameDB = "t";
+        $passwordDB = "t";
 
-function isLoggedIn(): bool{
-
-    session_start();
-    if(isset($_SESSION["username"])){
-        return true;
+        if ($username == $usernameDB && $password == $passwordDB) {
+            $_SESSION["username"] = $username;
+            return true;
+        }
+        return false;
     }
 
-    return false;
-}
+    public function isLoggedIn(): bool
+    {
+        if (isset($_SESSION["username"])) {
+            return true;
+        }
 
-function Logout()
-{
-    session_destroy();
+        return false;
+    }
+
+    public function Logout()
+    {
+        session_destroy();
+    }
 }

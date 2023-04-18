@@ -1,7 +1,5 @@
 <?php
 
-use app\controllers\SiteController;
-use app\controllers\AuthController;
 class Router
 {
     /**

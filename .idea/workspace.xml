@@ -5,8 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a27b19c5-6b16-48ec-860c-6d47e67ba99c" name="Changes" comment="">
+
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/layouts/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/layouts/header.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/User.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/startup/boot.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/AuthController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/SiteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/SiteController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/Router.php" beforeDir="false" afterPath="$PROJECT_DIR$/framework/Router.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/Auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Auth.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/layouts/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/layouts/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/site/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/auth/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/site/signup.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/site/signup.php" afterDir="false" />
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +50,7 @@
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/php-activerecord/php-activerecord" />
     </include_path>
   </component>
   <component name="ProjectId" id="2Nbv9kfFJuPfZoLyY7Lq1srktZ8" />
@@ -46,17 +62,33 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
+
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/xampp/htdocs/_Git/Projeto-PWEB-Servidor",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\_Git\Projeto-PWEB-Servidor\views\site" />
       <recent name="C:\xampp\htdocs\pweb" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\_Git\Projeto-PWEB-Servidor\views\auth" />
+      <recent name="C:\xampp\htdocs\_Git\Projeto-PWEB-Servidor\vendor" />
       <recent name="C:\xampp\htdocs\_Git\Projeto-PWEB-Servidor" />
       <recent name="C:\xampp\htdocs\_Git\Projeto-PWEB-Servidor\webapp" />
       <recent name="C:\xampp\htdocs\_Git\Projeto-PWEB-Servidor\website" />
-      <recent name="C:\xampp\htdocs\_Git\Projeto-PWEB-Servidor\public\css" />
-      <recent name="C:\xampp\htdocs\_Git\Projeto-PWEB-Servidor\views\layout" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -79,6 +111,10 @@
       <workItem from="1681735994136" duration="14671000" />
       <workItem from="1681752417774" duration="1302000" />
       <workItem from="1681755411525" duration="1109000" />
+      <workItem from="1681735994136" duration="28198000" />
+      <workItem from="1681767883567" duration="38000" />
+      <workItem from="1681772864277" duration="3619000" />
+      <workItem from="1681837404410" duration="1901000" />
     </task>
     <servers />
   </component>

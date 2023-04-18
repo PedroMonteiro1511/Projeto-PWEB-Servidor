@@ -7,7 +7,7 @@ if(isset($errorMessage)){
 ?>
 
 <div class="container">
-    <form action="index.php?c=site&a=login" method="post">
+    <form action="index.php?c=auth&a=login" method="post">
         <div class="form-group">
             <label for="inputName">Username:</label>
             <input type="text" class="form-control" id="inputusername" aria-describedby="usernameHelp" placeholder="Username" name="username">
