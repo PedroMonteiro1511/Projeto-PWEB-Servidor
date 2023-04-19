@@ -35,10 +35,10 @@
 
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <?= $_SESSION['username'] ?>
+                                <?= $_SESSION['active_user_username'] ?>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Perfil</a></li>
+                                <li><a class="dropdown-item" href="index.php?c=user&a=index">Perfil</a></li>
                                 <li><a class="dropdown-item" href="#">Something in here</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="#">Something else here</a></li>
