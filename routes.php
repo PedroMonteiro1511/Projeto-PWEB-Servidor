@@ -16,7 +16,8 @@ return [
         ],
     'auth' => [
         'index' => ['GET', 'AuthController', 'index'],
-        'login' =>['GET|POST', 'AuthController', 'login']
+        'login' =>['GET|POST', 'AuthController', 'login'],
+        'signout' => ['GET|POST', 'AuthController', 'signout'],
     ]
 ];
 

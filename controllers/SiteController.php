@@ -8,11 +8,16 @@ use User;
 
 class SiteController extends \BaseController
 {
+
+    public function __construct()
+    {
+        session_start();
+    }
+
+
     public function index()
     {
-        $this->renderView("site/index", [
-            'teste' => 'testes',
-        ]);
+        $this->renderView("site/index");
     }
 
     public function create()

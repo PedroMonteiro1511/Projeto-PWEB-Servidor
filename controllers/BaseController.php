@@ -1,6 +1,7 @@
 <?php
 class BaseController
 {
+
     public function redirectToRoute($route)
     {
         header("Location: views/$route.php");
