@@ -32,7 +32,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="index.php?c=site&a=login"> <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button> </a>
+                            <a href="index.php?c=auth&a=login"> <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button> </a>
                         </li>
                     </ul>
                 </div>
