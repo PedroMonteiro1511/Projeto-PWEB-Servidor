@@ -16,10 +16,10 @@ if(isset($errorMessage)){
             <label for="exampleInputPassword1">Password:</label>
             <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="password">
         </div>
-
-        <p>
         <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Login</button>
-            Já tem conta?
+        <p>
+
+           Já tem conta?
         <a href="index.php?c=site&a=signup">Registar</a>
         </p>
     </form>
