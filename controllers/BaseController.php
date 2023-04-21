@@ -4,7 +4,10 @@ class BaseController
 
     public function redirectToRoute($route)
     {
-        header("Location: views/$route.php");
+        $view = dirname($route);
+        $action = basename($route);
+
+        header("Location: index.php?c=$view&a=$action");
         exit();
     }
 
