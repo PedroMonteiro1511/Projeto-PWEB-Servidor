@@ -10,14 +10,14 @@ return [
     'defaultRoute' => ['GET', 'SiteController', 'index'],
     'site' => [
         'index' => ['GET', 'SiteController', 'index'],
-        'create' =>['GET', 'SiteController', 'create'],
-        'signup' =>['GET|POST', 'SiteController', 'signup'],
+        'create' => ['GET', 'SiteController', 'create'],
+        'signup' => ['GET|POST', 'SiteController', 'signup'],
 
-        'login' =>['GET|POST', 'SiteController', 'login'],
-        ],
+        'login' => ['GET|POST', 'SiteController', 'login'],
+    ],
     'auth' => [
         'index' => ['GET', 'AuthController', 'index'],
-        'login' =>['GET|POST', 'AuthController', 'login'],
+        'login' => ['GET|POST', 'AuthController', 'login'],
         'signout' => ['GET|POST', 'AuthController', 'signout'],
     ],
     'service' => [
@@ -28,6 +28,9 @@ return [
         'edit' => ['GET', 'ServiceController', 'edit'],
         'update' => ['POST', 'ServiceController', 'update'],
         'delete' => ['GET', 'ServiceController', 'delete'],
+    'user' => [
+        'index' => ['GET', 'UserController', 'index'],
+        'form' => ['GET', 'UserController', 'form']
     ]
 ];
 
