@@ -4,6 +4,8 @@ require_once 'controllers/BaseController.php';
 require_once 'controllers/SiteController.php';
 require_once 'controllers/AuthController.php';
 require_once 'controllers/ServiceController.php';
+require_once 'controllers/EmpresaController.php';
+
 
 return [
 
