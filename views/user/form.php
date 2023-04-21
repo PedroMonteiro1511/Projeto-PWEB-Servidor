@@ -1,100 +1,61 @@
-<style>
-
-    .col-xs-12 {
-        margin: 5px !important;
-    }
-
-    hr:not([size]) {
-        height: 30px !important;
-    }
-
-    #leftPanel {
-        background-color: #0079ac;
-        color: #fff;
-        /*     text-align: center; */
-    }
-
-    #rightPanel {
-        min-height: 500px;
-        min_width: 300px;
-    }
-
-    /* Credit to bootsnipp.com for the css for the color graph */
-    .colorgraph {
-        height: 20px;
-        border-top: 0;
-        /*   background: #c4e17f; */
-        border-radius: 5px;
-        background-image: -webkit-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
-        background-image: -moz-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
-        background-image: -o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
-        background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
-    }
-</style>   <?php //TODO Cores todas pipi , alterar se quiserem  ?>
-
-<div class="container" style="margin-top: 2%">
-    <div class="col-md-12">
-        <form role="form">
-            <h2>Alterar os dados do Perfil.</h2>
-            <hr class="colorgraph">
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <label for="username">Username: </label>
-                        <input type="text" name="username" id="username" class="form-control input-lg"
-                               placeholder="username" tabindex="1" value="<?= $_SESSION['active_user_username'] ?>">
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <label for="username">Email: </label>
-                    <input type="email" name="email" id="email" class="form-control input-lg"
-                           placeholder="Email Address"
-                           tabindex="4" value="<?= $_SESSION['active_user_email'] ?>" >
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-3">
-                    <div class="form-group">
-                        <label for="telefone">Telefone: </label>
-                        <input type="text" name="telefone" id="telefone" class="form-control input-lg"
-                               placeholder="Telefone" tabindex="1" value="<?= $_SESSION['active_user_telefone'] ?>">
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-3">
-                    <div class="form-group">
-                        <label for="morada">Morada: </label>
-                        <input type="text" name="morada" id="morada"
-                               class="form-control input-lg" placeholder="Morada" tabindex="6" value="<?= $_SESSION['active_user_morada'] ?>">
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-3">
-                    <div class="form-group">
-                        <label for="codpostal">Codigo Postal: </label>
-                        <input type="text" name="codpostal" id="codpostal"
-                               class="form-control input-lg" placeholder="Codigo Postal: " tabindex="6" value="<?= $_SESSION['active_user_codpostal'] ?>">
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-7">
-                    <div class="form-group">
-                        <label for="localidade">Localidade: </label>
-                        <input type="text" name="localidade" id="localidade" class="form-control input-lg"
-                               placeholder="Localidade" tabindex="1" value="<?= $_SESSION['active_user_localidade'] ?>">
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-
-                <a href="index.php?c=user&a=form" class="btn btn-success">Confirmar</a> <?php //TODO Ainda nao altera os dados ?>
-            </div>
-            <hr class="colorgraph">
-
-        </form>
-
-    </div>
-</div>
-</div>
-</div>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Apresentação da Empresa</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Estilos para a página */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-size: 24px;
+        }
+        main {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            font-size: 36px;
+            text-align: center;
+            margin-top: 0;
+        }
+        p {
+            font-size: 18px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        img {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Nome da Empresa</h1>
+</header>
+<main>
+    <h2>Sobre Nós</h2>
+    <p>Aqui você pode descrever a história da empresa, sua visão, missão e valores, além de destacar sua equipe e seus diferenciais em relação à concorrência.</p>
+    <h2>Produtos/Serviços</h2>
+    <p>Apresente seus principais produtos ou serviços, com imagens e descrições detalhadas. Destaque os benefícios que seus clientes terão ao adquiri-los.</p>
+    <h2>Depoimentos</h2>
+    <p>Inclua depoimentos de clientes satisfeitos com seus produtos ou serviços. Isso ajuda a construir confiança e credibilidade.</p>
+    <h2>Contato</h2>
+    <p>Disponibilize informações de contato, como telefone, e-mail e endereço físico, além de um formulário de contato. Isso facilita o contato dos clientes interessados em seus produtos ou serviços.</p>
+    <img src="imagem-empresa.jpg" alt="Imagem da Empresa">
+</main>
+</body>
+</html>

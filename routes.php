@@ -32,6 +32,10 @@ return [
     'user' => [
         'index' => ['GET', 'UserController', 'index'],
         'form' => ['GET', 'UserController', 'form']
-    ]
+    ],
+    'empresa' => [
+    'index' => ['GET', 'EmpresaController', 'index'],
+    'form' => ['GET', 'EmpresaController', 'form']
+]
 ];
 
