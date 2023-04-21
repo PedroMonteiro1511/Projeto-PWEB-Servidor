@@ -8,6 +8,11 @@
 </head>
 <body>
 <main class="text-center">
+    <div>
+        <a href="index.php?c=empresa&a=form&id=<?= $model->id ?>" class="btn btn-primary" role="button">Editar Dados da Empresa</a>
+
+    </div>
+    <br>
     <img style="border-radius: 15px" src="public/imgs/imagem-empresa.jpg" alt="Imagem da Empresa">
     <h2>Designação Social
         <br>

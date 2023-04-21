@@ -30,6 +30,31 @@ class EmpresaController extends \BaseController
         }
     }
 
+    public function update($id)
+    {
+        $empresa = Empresa::find([$id]);
+
+        $attributes = array(
+            'desigsocial' => $_POST["desigsocial"],
+            'email' => $_POST["email"],
+            'telefone' => (int)$_POST["telefone"],
+            'nif' => (int)$_POST["nif"],
+            'morada' => $_POST["morada"],
+            'codpostal' => $_POST["codpostal"],
+            'localidade' => $_POST["localidade"],
+            'capsocial' => (int)$_POST["capsocial"],
+        );
+
+        $empresa->update_attributes($attributes);
+
+        if($empresa->is_valid()){
+                $empresa->save();
+            return $this->redirectToRoute('empresa/index');
+        } else {
+            return $this->renderView('site/404');
+        }
+    }
+
     /*public function form(){
         $empresa = Empresa::find('one');
 

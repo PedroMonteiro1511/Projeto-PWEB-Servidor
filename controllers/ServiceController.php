@@ -28,9 +28,14 @@ class ServiceController extends \BaseController
 
     public function create(){
 
-        $ivas = Iva::find(['emvigor' => 'sim'])->all(); // Get all active ivas from database, to show in select box.
-
-        return $this->renderView('service/create', ['ivas' => $ivas]);
+        $ivas = Iva::find(['emvigor' => 'sim']); // Get all active ivas from database, to show in select box.
+        if($ivas!=null){
+            $ivas = Iva::find(['emvigor' => 'sim'])->all();
+            return $this->renderView('service/create', ['ivas' => $ivas]);
+        }
+        else{
+            return $this->redirectToRoute('site/404');//alterar patra o caminho da criação de ivas com mensagem de aviso
+        }
     }
 
     public function store(){

@@ -37,7 +37,8 @@ return [
     ],
     'empresa' => [
     'index' => ['GET', 'EmpresaController', 'index'],
-    'form' => ['GET', 'EmpresaController', 'form']
+    'form' => ['GET', 'EmpresaController', 'form'],
+        'update' => ['POST', 'EmpresaController', 'update']
 ]
 ];
 
