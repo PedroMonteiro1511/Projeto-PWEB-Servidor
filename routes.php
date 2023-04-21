@@ -28,6 +28,7 @@ return [
         'edit' => ['GET', 'ServiceController', 'edit'],
         'update' => ['POST', 'ServiceController', 'update'],
         'delete' => ['GET', 'ServiceController', 'delete'],
+    ],
     'user' => [
         'index' => ['GET', 'UserController', 'index'],
         'form' => ['GET', 'UserController', 'form']

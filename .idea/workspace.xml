@@ -5,19 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a27b19c5-6b16-48ec-860c-6d47e67ba99c" name="Changes" comment="Active record in &quot;composer.json&quot;">
-      <change afterPath="$PROJECT_DIR$/controllers/ServiceController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/Iva.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/Service.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/deleteMessage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/service/create.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/service/edit.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/service/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/service/show.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/site/404.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/BaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/BaseController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/layouts/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/layouts/footer.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/layouts/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/layouts/header.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
