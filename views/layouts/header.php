@@ -26,8 +26,24 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="index.php?c=site&a=index">Ínicio</a>
                     </li>
+                    <?php
+
+
+                    //INSERIR AS TABS QUE SO UTILIZADORES LOGADOS PODEM ACEDER
+                    if (isset($_SESSION['active_user_id'])) {
+                        ?>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="index.php?c=service&a=index">Serviços</a>
+                                </li>
+
+                        <?php
+                    }
+
+                    ?>
                 </ul>
             </div>
+
 
             <div class="my-2 my-lg-0" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
@@ -38,7 +54,7 @@
 
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <?= $_SESSION['active_user_username'] ?>
+                                <?= Auth::get_active_user($_SESSION['active_user_id']); ?>
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="index.php?c=user&a=index">Perfil</a></li>

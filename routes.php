@@ -4,8 +4,7 @@ require_once 'controllers/BaseController.php';
 require_once 'controllers/SiteController.php';
 require_once 'controllers/AuthController.php';
 require_once 'controllers/ServiceController.php';
-require_once 'controllers/EmpresaController.php';
-
+require_once 'controllers/UserController.php';
 
 return [
 
@@ -33,12 +32,8 @@ return [
     ],
     'user' => [
         'index' => ['GET', 'UserController', 'index'],
-        'form' => ['GET', 'UserController', 'form']
-    ],
-    'empresa' => [
-    'index' => ['GET', 'EmpresaController', 'index'],
-    'form' => ['GET', 'EmpresaController', 'form'],
-        'update' => ['POST', 'EmpresaController', 'update']
-]
+        'edit' => ['GET', 'UserController', 'edit'],
+        'update' => ['GET|POST', 'UserController', 'update']
+    ]
 ];
 

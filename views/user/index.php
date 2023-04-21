@@ -4,7 +4,7 @@
             <div class="col-lg-12">
                 <div class="card mb-2">
                     <div class="card-body text-center">
-                        <h5 class="my-3"><?= $_SESSION['active_user_username'] ?></h5>
+                        <h5 class="my-3"><?= $model->username ?></h5>
                         <img class="rounded-circle mt-1"
                              width="150px"
                              src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
@@ -23,7 +23,7 @@
                                 <p class="mb-0"> <b>Email</b> </p>
                             </div>
                             <div class="col-sm-9">
-                                <p class="text-muted mb-0"><?= $_SESSION['active_user_email'] ?></p>
+                                <p class="text-muted mb-0"><?= $model->email ?></p>
                             </div>
                         </div>
                         <hr>
@@ -32,7 +32,7 @@
                                 <p class="mb-0"> <b>Telefone</b> </p>
                             </div>
                             <div class="col-sm-9">
-                                <p class="text-muted mb-0"><?= $_SESSION['active_user_telefone'] ?></p>
+                                <p class="text-muted mb-0"><?= $model->telefone ?></p>
                             </div>
                         </div>
                         <hr>
@@ -41,7 +41,7 @@
                                 <p class="mb-0"> <b>Morada</b> </p>
                             </div>
                             <div class="col-sm-9">
-                                <p class="text-muted mb-0"><?= $_SESSION['active_user_morada'] ?></p>
+                                <p class="text-muted mb-0"><?= $model->morada ?></p>
                             </div>
                         </div>
                         <hr>
@@ -50,7 +50,7 @@
                                 <p class="mb-0"> <b>Localidade</b> </p>
                             </div>
                             <div class="col-sm-9">
-                                <p class="text-muted mb-0"><?= $_SESSION['active_user_localidade'] ?></p>
+                                <p class="text-muted mb-0"><?= $model->localidade ?></p>
                             </div>
                         </div>
                     </div>
@@ -59,7 +59,7 @@
 
                     <div class="col-md-12">
                         <div class="card mb-4 mb-md-0">
-                            <a href="index.php?c=user&a=form" class="btn btn-success">Alterar os meus dados!</a>
+                            <a href="index.php?c=user&a=edit" class="btn btn-success">Alterar os meus dados!</a>
                         </div>
                     </div>
                 </div>
