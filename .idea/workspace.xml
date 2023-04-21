@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a27b19c5-6b16-48ec-860c-6d47e67ba99c" name="Changes" comment="Active record in &quot;composer.json&quot;" />
+    <list default="true" id="a27b19c5-6b16-48ec-860c-6d47e67ba99c" name="Changes" comment="Active record in &quot;composer.json&quot;">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/user/form.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/user/form.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -40,32 +44,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/xampp/htdocs/Projeto-PWEB-Servidor&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
-  }
-}</component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/views/empresa" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Projeto-PWEB-Servidor\views\empresa" />
+      <recent name="C:\xampp\htdocs\Projeto-PWEB-Servidor\controllers" />
+      <recent name="C:\xampp\htdocs\Projeto-PWEB-Servidor\models" />
       <recent name="C:\xampp\htdocs\_Git\Projeto-PWEB-Servidor\views\site" />
       <recent name="C:\xampp\htdocs\pweb" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Projeto-PWEB-Servidor\public\imgs" />
       <recent name="C:\xampp\htdocs\_Git\Projeto-PWEB-Servidor\views\auth" />
       <recent name="C:\xampp\htdocs\_Git\Projeto-PWEB-Servidor\vendor" />
       <recent name="C:\xampp\htdocs\_Git\Projeto-PWEB-Servidor" />
       <recent name="C:\xampp\htdocs\_Git\Projeto-PWEB-Servidor\webapp" />
-      <recent name="C:\xampp\htdocs\_Git\Projeto-PWEB-Servidor\website" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -94,6 +93,7 @@
       <workItem from="1681837404410" duration="1901000" />
       <workItem from="1681845285495" duration="877000" />
       <workItem from="1681846197740" duration="50000" />
+      <workItem from="1682100299187" duration="3411000" />
     </task>
     <servers />
   </component>
