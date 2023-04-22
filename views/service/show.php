@@ -24,9 +24,11 @@
 
         <div class="form-group mt-4">
             <label for="idIva">Iva:</label>
-            <input type="text" class="form-control" name="ivaid" value="<?= $model->getIvaPercentagemByIdIva($model->idiva). "% - " .
-            $model->getIvaDescricaoByIdIva($model->idiva) ?>" disabled>
+            <input type="text" class="form-control" id="idIva" name="ivaid"
+                   value="<?= $model->getIvaPercentagemByIdIva($model->idiva) . "% - " .
+                   $model->getIvaDescricaoByIdIva($model->idiva) ?>" disabled>
         </div>
-        <a href="index.php?c=service&a=index" class="btn btn-secondary mt-4" role="button" aria-pressed="true">Voltar</a>
+        <a href="index.php?c=service&a=index" class="btn btn-secondary mt-4" role="button"
+           aria-pressed="true">Voltar</a>
     </form>
 </div>

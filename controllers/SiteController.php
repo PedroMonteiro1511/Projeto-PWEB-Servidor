@@ -32,7 +32,6 @@ class SiteController extends \BaseController
             && isset($_POST["telefone"]) && isset($_POST["nif"]) && isset($_POST["morada"])
             && isset($_POST["codPostal"]) && isset($_POST["localidade"])) {
 
-            //echo var_dump($_POST);
             //Declarar atributos a passar no modelo user
             $attributes = array(
                 'username' => $_POST["username"],
@@ -43,28 +42,22 @@ class SiteController extends \BaseController
                 'morada' => $_POST["morada"],
                 'codpostal' => $_POST["codPostal"],
                 'localidade' => $_POST["localidade"],
-                'role' => "Cliente"
+                'role' => User::$Role_User_Cliente
             );
 
-            //$attributes = $_POST;
-
-            //echo var_dump($attributes);
             //criar user
             $user = new User($attributes);
 
             //validar
             if ($user->is_valid()) {
-                //$attributes['password'] = md5($_POST["password"]);
-                //$user->update_attribute('password', md5($_POST["password"]));
+                $user->update_attribute('password', md5($_POST["password"]));
 
-                $user->save(false); //isValid já validou não precisa de validar de novo no save
-                return $this->renderView("auth/login");
+                if ($user->save()) {
+                    return $this->renderView("auth/login");
+                }
             }
 
-            //Obtem os erros do validate
-            $erros = $user->errors;
-           // $erros = $erros;
-            return $this->renderView("site/signup", ['errorsMessage' => $erros]);
+            return $this->renderView("site/signup", ['model' => $user]);
 
         } else {
             return $this->renderView("site/signup");

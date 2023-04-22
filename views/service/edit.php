@@ -2,12 +2,12 @@
 ?>
 
 <div class="container">
-    <form action="index.php?c=service&a=update&id=<?=$model->id ?>" method="post">
+    <form action="index.php?c=service&a=update&id=<?= $model->id ?>" method="post">
         <h4 class="display-4 text-center">Serviço</h4>
         <hr>
         <div class="form-group mt-4">
             <label for="referencia">Referência:</label>
-            <input type="text" class="form-control" name="referencia" maxlength="10" value="<?= $model->referencia ?>" >
+            <input type="text" class="form-control" name="referencia" maxlength="10" value="<?= $model->referencia ?>">
         </div>
         <p style="color: red"><?php
             if (isset($model->errors)) {
@@ -24,7 +24,7 @@
 
         <div class="form-group mt-4">
             <label for="description">Descrição:</label>
-            <input type="text" class="form-control" name="descricao" value="<?= $model->descricao ?>" >
+            <input type="text" class="form-control" name="descricao" value="<?= $model->descricao ?>">
         </div>
         <p style="color: red"><?php
             if (isset($model->errors)) {
@@ -41,7 +41,7 @@
 
         <div class="form-group mt-4">
             <label for="preco">Preço:</label>
-            <input type="text" class="form-control" name="preco" value="<?= $model->preco ?>" >
+            <input type="text" class="form-control" name="preco" value="<?= $model->preco ?>">
         </div>
         <p style="color: red"><?php
             if (isset($model->errors)) {
@@ -59,8 +59,8 @@
         <div class="form-group">
             <label for="idIva">Iva:</label>
             <select class="form-control" name="idIva">
-                <?php foreach ($ivas as $key=>$value): ?>
-                    <option value="<?= $key ?>"> <?= $value?></option>
+                <?php foreach ($ivas as $key => $value): ?>
+                    <option value="<?= $key ?>"> <?= $value ?></option>
                 <?php endforeach; ?>
             </select>
         </div>

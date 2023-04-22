@@ -2,11 +2,21 @@
 
 namespace app\controllers;
 
+use ActiveRecord\RecordNotFound;
 use Iva;
 use Service;
 
 class ServiceController extends \BaseController
 {
+    public function __construct()
+    {
+        $author = new \Auth();
+        if (!$author->isLoggedIn()) {
+            return $this->redirectToRoute('auth/login');
+        }
+
+        return null;
+    }
 
     public function index()
     {
@@ -17,23 +27,28 @@ class ServiceController extends \BaseController
 
     public function show($id)
     {
-        $service = Service::find([$id]);
+        $model = $this->findModel($id);
 
-        if (is_null($service)) {
-           return $this->redirectToRoute('site/404'); //error page
+        if (is_null($model)) {
+            return $this->redirectToRoute('service/index');
         } else {
-            return $this->renderView('service/show', ['model' => $service]);
+            return $this->renderView('service/show', ['model' => $model]);
         }
     }
 
-    public function create(){
+    public function create()
+    {
+        $ivas = Iva::find(['emvigor' => 'sim']);
 
-        $ivas = Iva::find(['emvigor' => 'sim'])->all(); // Get all active ivas from database, to show in select box.
+        if ($ivas != null) {
+            $ivas = $ivas->all(); //obtem ivas para a selectbox da view
+        }
 
         return $this->renderView('service/create', ['ivas' => $ivas]);
     }
 
-    public function store(){
+    public function store()
+    {
         $attributes = array(
             'referencia' => $_POST["referencia"],
             'descricao' => $_POST["descricao"],
@@ -42,30 +57,33 @@ class ServiceController extends \BaseController
         );
 
         $service = new Service($attributes);
-        if($service->is_valid()){
+        if ($service->is_valid()) {
             $service->save();
             return $this->redirectToRoute('service/index');
 
-        }else{
-            $ivas = Iva::find(['emvigor' => 'sim'])->all(); // Get all active ivas from database, to show in select box.
+        } else {
+            $ivas = Iva::find(['emvigor' => 'sim']);
+            if ($ivas != null) {
+                $ivas = $ivas->all();
+            }
             return $this->renderView('service/create', ['model' => $service, 'ivas' => $ivas]);
         }
     }
 
-    public function edit($id){
-        $service = Service::find([$id]);
-        $ivasMap = $this->getIvasMap($service); // Get all active ivas from database, to show in select box.
-
-        if (is_null($service)) {
-            return $this->redirectToRoute('site/404');
-        } else {
-            return  $this->renderView('service/edit', ['model' => $service, 'ivas' => $ivasMap]);
+    public function edit($id)
+    {
+        $model = $this->findModel($id);
+        if (is_null($model)) {
+            return $this->redirectToRoute('service/index');
         }
+
+        $ivasMap = $this->getIvasMap($model);
+        return $this->renderView('service/edit', ['model' => $model, 'ivas' => $ivasMap]);
     }
 
     public function update($id)
     {
-        $service = Service::find([$id]);
+        $model = $this->findModel($id);
 
         $attributes = array(
             'referencia' => $_POST["referencia"],
@@ -74,24 +92,41 @@ class ServiceController extends \BaseController
             'idIva' => (int)$_POST["idIva"],
         );
 
-        $service->update_attributes($attributes);
+        $model->update_attributes($attributes);
 
-        if($service->is_valid()){
-            $service->save();
+        if ($model->is_valid()) {
+            $model->save();
             return $this->redirectToRoute('service/index');
         } else {
-            $ivasMap = $this->getIvasMap($service);
+            $ivasMap = $this->getIvasMap($model);
 
-            return $this->renderView('service/edit', ['model' => $service, 'ivas' => $ivasMap]);
+            return $this->renderView('service/edit', ['model' => $model, 'ivas' => $ivasMap]);
         }
     }
 
     public function delete($id)
     {
-        $service = Service::find([$id]);
-        $service->delete();
+        $model = $this->findModel($id);
+
+        if ($model != null) {
+            $model->delete();
+        }
+
         return $this->redirectToRoute('service/index');
     }
+
+
+    private function findModel($id)
+    {
+        try {
+            $model = Service::find([$id]);
+        } catch (RecordNotFound $e) {
+            return null;
+        }
+
+        return $model;
+    }
+
 
     /**
      * @param mixed $service
@@ -99,9 +134,9 @@ class ServiceController extends \BaseController
      * @throws \ActiveRecord\RecordNotFound
      * O serviço é passado como parametro para saber o iva que já está adcionado ao serviço para evitar duplicados no array final
      */
-    public function getIvasMap(mixed $service): array
+    private function getIvasMap(mixed $service): array
     {
-        $ivas = Iva::find(['emvigor' => 'sim'])->all(); // Get all active ivas from database, to show in select box.
+        $ivas = Iva::find(['emvigor' => 'sim'])->all(); // Obtem todos os ivas da basedados, para mostrar na select box.
 
         // O valor da chave é definido como vazio mas no foreach é atualizado
         $ivasMap = [$service->idiva => ""];

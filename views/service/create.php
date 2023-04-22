@@ -84,19 +84,19 @@
             <select class="form-control" name="idIva" id="idIva">
                 <option selected>Selecione um Iva</option>
                 <?php foreach ($ivas as $iva): ?>
-                <option value="<?= $iva->id ?>"> <?= $iva->percentagem . "% - " . $iva->descricao; ?></option>
+                    <option value="<?= $iva->id ?>"> <?= $iva->percentagem . "% - " . $iva->descricao; ?></option>
                 <?php endforeach; ?>
             </select>
         </div>
         <p style="color: red"><?php
             if (isset($model->errors)) {
-            if (is_array($model->errors->on('idiva'))) {
-            foreach ($model->errors->on('idiva') as $error) {
-            echo $error . '<br>';
-            }
-            } else {
-            echo $model->errors->on('idiva');
-            }
+                if (is_array($model->errors->on('idiva'))) {
+                    foreach ($model->errors->on('idiva') as $error) {
+                        echo $error . '<br>';
+                    }
+                } else {
+                    echo $model->errors->on('idiva');
+                }
             }
             ?>
         </p>

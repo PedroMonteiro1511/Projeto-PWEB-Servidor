@@ -5,7 +5,7 @@
     <div class="mt-5">
         <h2 class="text-left">Serviços
             <a href="index.php?c=service&a=create" class="btn btn-success"
-                                          role="button">Novo</a>
+               role="button">Novo</a>
         </h2>
 
         <h2 class="top-space"></h2>
