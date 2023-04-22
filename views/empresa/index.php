@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Apresentação da Empresa</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="public/css/style.css">
+</head>
+<body>
+<main class="text-center">
+    <div>
+        <a href="index.php?c=empresa&a=form&id=<?= $model->id ?>" class="btn btn-primary" role="button">Editar Dados da Empresa</a>
+
+    </div>
+    <br>
+    <img style="border-radius: 15px" src="public/imgs/imagem-empresa.jpg" alt="Imagem da Empresa">
+    <h2>Designação Social
+        <br>
+        <h6>Nome: <?= $model->desigsocial ?></h6>
+        <h6>NIF: <?= $model->nif ?></h6>
+    </h2>
+    <br>
+    <h2>Capital Social
+        <br>
+        <h6><?= $model->capsocial ?> €</h6>
+    </h2>
+    <br>
+    <h2>Produtos/Serviços</h2>
+    <p>Apresente seus principais produtos ou serviços, com imagens e descrições detalhadas. Destaque os benefícios que seus clientes terão ao adquiri-los.</p>
+    <h2>Depoimentos</h2>
+    <p>Inclua depoimentos de clientes satisfeitos com seus produtos ou serviços. Isso ajuda a construir confiança e credibilidade.</p>
+    <br>
+    <h2>Contacto
+        <br>
+        <h6>☎: <?= $model->telefone ?></h6>
+        <h6>📧: <?= $model->email ?></h6>
+    </h2>
+    <br>
+    <h2>Endereço
+        <br>
+        <h6> Morada: <?= $model->morada ?></h6>
+        <h6> Código-Postal: <?= $model->codpostal ?></h6>
+        <h6> Localidade: <?= $model->localidade ?></h6>
+    </h2>
+    <br>
+    <br>
+    <br>
+</main>
+</body>
+<footer>
+</footer>
+</html>

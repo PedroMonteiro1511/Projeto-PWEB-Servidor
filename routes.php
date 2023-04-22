@@ -32,7 +32,8 @@ return [
     ],
     'user' => [
         'index' => ['GET', 'UserController', 'index'],
-        'form' => ['GET', 'UserController', 'form']
+        'edit' => ['GET', 'UserController', 'edit'],
+        'update' => ['GET|POST', 'UserController', 'update']
     ]
 ];
 
