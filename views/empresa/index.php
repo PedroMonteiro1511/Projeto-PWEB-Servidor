@@ -9,7 +9,7 @@
 <body>
 <main class="text-center">
     <div>
-        <a href="index.php?c=empresa&a=form&id=<?= $model->id ?>" class="btn btn-primary" role="button">Editar Dados da Empresa</a>
+        <a href="index.php?c=empresa&a=edit&id=<?= $model->id ?>" class="btn btn-primary" role="button">Editar Dados da Empresa</a>
 
     </div>
     <br>

@@ -26,6 +26,9 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="index.php?c=site&a=index">Ínicio</a>
                     </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.php?c=empresa&a=index">Empresa</a>
+                    </li>
                     <?php
 
 
