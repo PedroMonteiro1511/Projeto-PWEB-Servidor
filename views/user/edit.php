@@ -34,7 +34,7 @@
 
 <div class="container" style="margin-top: 2%">
     <div class="col-md-12">
-        <form role="form" action="index.php?c=user&a=update" method="post">
+        <form role="form" action="index.php?c=user&a=update&id=<?= $model->id ?>" method="post">
             <h2>Alterar os dados do Perfil.</h2>
             <hr class="colorgraph">
             <div class="row">
@@ -99,6 +99,21 @@
                         <label for="password_edit">Password: </label>
                         <input type="password" name="password_edit" id="password_edit" class="form-control input-lg"
                                placeholder="Localidade" tabindex="1" value="<?= $model->password ?>">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-7">
+                    <div class="form-group">
+                        <label for="role_edit">Role</label>
+                        <select class="form-control" name="role_edit" id="role_edit">
+                            <option value="<?= User::$Role_User_Cliente ?>" <?php if (User::$Role_User_Cliente == $model->role){?>selected <?php } ?>><?= User::$Role_User_Cliente ?></option>
+                            <option value="<?= User::$Role_User_Funcionario ?>" <?php if (User::$Role_User_Funcionario == $model->role){?>selected <?php } ?>><?= User::$Role_User_Funcionario ?></option>
+                            <?php if ($_SESSION['active_user_role'] == User::$Role_User_Admin){ ?>
+                                <option value="<?= User::$Role_User_Admin ?>" <?php if (User::$Role_User_Admin == $model->role){?>selected <?php } ?>><?= User::$Role_User_Admin ?></option>
+                            <?php } ?>
+                        </select>
                     </div>
                 </div>
             </div>

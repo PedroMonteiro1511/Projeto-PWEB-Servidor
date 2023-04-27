@@ -9,34 +9,75 @@ class UserController extends \BaseController
 
     public function __construct()
     {
-        session_start();
-    }
-
-    public function index(){
-        $active_user = User::find([$_SESSION['active_user_id']]);
-
-        if (is_null($active_user)) {
-            return $this->redirectToRoute('site/404'); //error page
-        } else {
-            return $this->renderView('user/index', ['model' => $active_user]);
+        $author = new \Auth();
+        if (!$author->isLoggedIn()) {
+            return $this->redirectToRoute('auth/login');
         }
     }
 
-    public function edit(){
-        $active_user = User::find([$_SESSION['active_user_id']]);
+    public function index(){
+        $users = User::all();
 
-        $this->renderView('user/edit', ['model' => $active_user]);
+        return $this->renderView('user/index', ['users' => $users]);
     }
 
-    public function update(){
-        $idUser = $_SESSION['active_user_id'];
+    public function view($id){
+        $user = User::find([$id]);
 
-        $user = User::find('one', array('conditions' => "id LIKE '$idUser'"));
+        if (is_null($user)) {
+            return $this->redirectToRoute('site/404'); //error page
+        } else {
+            return $this->renderView('user/view', ['model' => $user]);
+        }
+    }
 
+    public function show($id){
+        $user = User::find([$id]);
 
+        if (is_null($user)) {
+            return $this->redirectToRoute('site/404'); //error page
+        } else {
+            return $this->renderView('user/show', ['model' => $user]);
+        }
+    }
+
+    public function create(){
+        return $this->renderView('user/create');
+    }
+
+    public function store(){
+
+        $attributes = array(
+            'username' => $_POST["username"],
+            'password' => $_POST["password"],
+            'email' => $_POST["email"],
+            'telefone' => $_POST["telefone"],
+            'nif' => $_POST["nif"],
+            'morada' => $_POST["morada"],
+            'codpostal' => $_POST["codpostal"],
+            'localidade' => $_POST["localidade"],
+        );
+
+        $user = new User($attributes);
+        if ($user->is_valid()) {
+            $user->save();
+            return $this->redirectToRoute('user/index');
+        } else {
+            return $this->renderView('user/create', ['model' => $user]);
+        }
+    }
+
+    public function edit($id){
+        $user = User::find([$id]);
+
+        $this->renderView('user/edit', ['model' => $user]);
+    }
+
+    public function update($id){
+        $user = User::find([$id]);
         if (isset($_POST["username_edit"]) && isset($_POST["email_edit"]) && isset($_POST["telefone_edit"])
             && isset($_POST["morada_edit"]) && isset($_POST["codpostal_edit"]) && isset($_POST["nif_edit"])
-            && isset($_POST["localidade_edit"]) && isset($_POST["password_edit"])) {
+            && isset($_POST["localidade_edit"]) && isset($_POST["password_edit"]) && isset($_POST["role_edit"])) {
 
             $user->username = $_POST["username_edit"];
             $user->email = $_POST["email_edit"];
@@ -46,8 +87,11 @@ class UserController extends \BaseController
             $user->nif = $_POST["nif_edit"];
             $user->localidade = $_POST["localidade_edit"];
             $user->password = $_POST["password_edit"];
+            $user->role = $_POST["role_edit"];
 
             $user->save();
+
+            $_SESSION['active_user_role'] = $user->role;
 
             $this->redirectToRoute('user/index');
         }

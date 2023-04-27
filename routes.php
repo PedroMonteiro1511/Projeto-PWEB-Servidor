@@ -4,6 +4,7 @@ require_once 'controllers/BaseController.php';
 require_once 'controllers/SiteController.php';
 require_once 'controllers/AuthController.php';
 require_once 'controllers/ServiceController.php';
+require_once 'controllers/EmpresaController.php';
 require_once 'controllers/UserController.php';
 require_once 'controllers/FolhaController.php';
 require_once 'controllers/LinhaController.php';
@@ -24,6 +25,11 @@ return [
         'login' => ['GET|POST', 'AuthController', 'login'],
         'signout' => ['GET|POST', 'AuthController', 'signout'],
     ],
+    'empresa' => [
+        'index' => ['GET', 'EmpresaController', 'index'],
+        'form' => ['GET', 'EmpresaController', 'form'],
+        'edit' => ['GET', 'EmpresaController', 'edit'],
+    ],
     'service' => [
         'index' => ['GET', 'ServiceController', 'index'],
         'show' => ['GET', 'ServiceController', 'show'],
@@ -36,7 +42,11 @@ return [
     'user' => [
         'index' => ['GET', 'UserController', 'index'],
         'edit' => ['GET', 'UserController', 'edit'],
-        'update' => ['GET|POST', 'UserController', 'update']
+        'update' => ['GET|POST', 'UserController', 'update'],
+        'view' => ['GET|POST', 'UserController', 'view'],
+        'show' => ['GET|POST', 'UserController', 'show'],
+        'create' => ['GET|POST', 'UserController', 'create'],
+        'store' => ['GET|POST', 'UserController', 'store']
     ],
     'folha'=>[
         'index' => ['GET', 'FolhaController', 'index'],

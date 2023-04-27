@@ -26,20 +26,41 @@
             <li class="nav-item active">
                 <a class="nav-link" href="index.php?c=site&a=index">Ínicio</a>
             </li>
-            <?php
+            <li class="nav-item active">
+                <a class="nav-link" href="index.php?c=empresa&a=index">Empresa</a>
+            </li>
+            <?php if (isset($_SESSION['active_user_role']) && $_SESSION['active_user_role'] != User::$Role_User_Cliente){
+            ?>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        Gestão
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="index.php?c=user&a=index">Gestão de Utilizadores</a></li>
+                        <li>
+                            <a class="dropdown-item" href="#">Something Else</a>
+                        </li>
 
-
-            //INSERIR AS TABS QUE SO UTILIZADORES LOGADOS PODEM ACEDER
-            if (isset($_SESSION['active_user_id'])) {
-                ?>
+                    </ul>
+                </li>
 
                 <li class="nav-item">
                     <a class="nav-link" href="index.php?c=service&a=index">Serviços</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php?c=folha&a=index">Folhas de Obra</a>
+                </li>
 
                 <?php
             }
-
+            else{
+                ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php?c=folhacliente&a=index">Minhas Folhas</a>
+                </li>
+            <?php
+            }
             ?>
         </ul>
     </div>
@@ -51,27 +72,19 @@
             if (isset($_SESSION['active_user_id'])) {
                 ?>
 
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                       aria-expanded="false">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php?c=user&a=show&id=<?=     $_SESSION['active_user_id'] ?>">
                         <?= Auth::get_active_user($_SESSION['active_user_id']); ?>
                     </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="index.php?c=user&a=index">Perfil</a></li>
-                        <li><a class="dropdown-item" href="#">Something in here</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
                 </li>
+
 
                 <li class="nav-item">
                     <a href="index.php?c=auth&a=signout">
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
                     </a>
                 </li>
+
 
                 <?php
             } else {
@@ -93,8 +106,10 @@
             }
 
             ?>
+
         </ul>
     </div>
+
 </nav>
 
 
