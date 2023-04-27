@@ -3,6 +3,10 @@ body{
     background : white;
 }
 
+.container{
+    margin-top: 20px !important;
+}
+
 /* Css da navBar */
 
 .navbar{

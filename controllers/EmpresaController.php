@@ -28,7 +28,7 @@ class EmpresaController extends \BaseController
         if (is_null($empresa)) {
             return $this->redirectToRoute('site/404'); //error page
         } else {
-            return $this->renderView('empresa/form', ['model' => $empresa]);
+            return $this->renderView('empresa/edit', ['model' => $empresa]);
         }
     }
 

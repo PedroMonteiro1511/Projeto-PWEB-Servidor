@@ -14,14 +14,7 @@ class Auth
         if ($user) {
 
             $_SESSION['active_user_id'] = $user->id;
-            $_SESSION['active_user_password'] = $user->password;
             $_SESSION['active_user_username'] = $user->username;
-            $_SESSION['active_user_email'] = $user->email;
-            $_SESSION['active_user_telefone'] = $user->telefone;
-            $_SESSION['active_user_nif'] = $user->nif;
-            $_SESSION['active_user_morada'] = $user->morada;
-            $_SESSION['active_user_codpostal'] = $user->codpostal;
-            $_SESSION['active_user_localidade'] = $user->localidade;
             $_SESSION['active_user_role'] = $user->role;
 
             return true;
@@ -46,6 +39,14 @@ class Auth
         }
 
         return false;
+    }
+
+    public function get_active_role(){
+        if (isset($_SESSION['active_user_role'])){
+            return $_SESSION['active_user_role'];
+        }
+        else
+            return null;
     }
 
     public function logout()
