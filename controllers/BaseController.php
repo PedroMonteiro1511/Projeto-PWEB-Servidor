@@ -1,21 +1,30 @@
 <?php
 class BaseController
 {
-
-    public function redirectToRoute($route)
-    {
-        $view = dirname($route);
+    /**
+     * Redirect to another route.
+     *
+     * @param string $controllerPrefix The controller prefix of the route to redirect to.
+     * @param string $action The action of the route to redirect to.
+     * @param array $params Optional query parameters to include in the redirect URL.
+     */
+    protected function redirectToRoute($route, $params = []
+    ){
+        $controllerPrefix = dirname($route);
         $action = basename($route);
 
-        header("Location: index.php?c=$view&a=$action");
-        exit();
+        $url = 'Location: index.php?c='.$controllerPrefix.'&a='.$action;
+        foreach ($params as $paramKey => $paramValue){
+            $url.='&'.$paramKey.'='.$paramValue;
+        }
+        header($url);
     }
 
-    public function renderView($view, $params = [])
+    protected function renderView($view, $params = [], $layout = 'default')
     {
         extract($params);
-        require_once "./views/layouts/header.php";
-        require_once "./views/$view.php";
-        require_once "./views/layouts/footer.php";
+        $viewPath = "./views/$view.php";
+        $layoutPath = "./views/layouts/$layout.php";
+        require_once ($layoutPath);
     }
 }

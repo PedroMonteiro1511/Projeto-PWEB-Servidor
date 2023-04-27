@@ -22,6 +22,7 @@ class Auth
             $_SESSION['active_user_morada'] = $user->morada;
             $_SESSION['active_user_codpostal'] = $user->codpostal;
             $_SESSION['active_user_localidade'] = $user->localidade;
+            $_SESSION['active_user_role'] = $user->role;
 
             return true;
         } else {

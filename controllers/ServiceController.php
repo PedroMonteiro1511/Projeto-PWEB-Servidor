@@ -53,7 +53,7 @@ class ServiceController extends \BaseController
             'referencia' => $_POST["referencia"],
             'descricao' => $_POST["descricao"],
             'preco' => $_POST["preco"],
-            'idIva' => (int)$_POST["idIva"],
+            'iva_id' => (int)$_POST["iva_id"],
         );
 
         $service = new Service($attributes);
@@ -77,8 +77,12 @@ class ServiceController extends \BaseController
             return $this->redirectToRoute('service/index');
         }
 
-        $ivasMap = $this->getIvasMap($model);
-        return $this->renderView('service/edit', ['model' => $model, 'ivas' => $ivasMap]);
+        $ivas = Iva::find(['emvigor' => 'sim']);
+
+        if ($ivas != null) {
+            $ivas = $ivas->all();
+        }
+        return $this->renderView('service/edit', ['model' => $model, 'ivas' => $ivas]);
     }
 
     public function update($id)
@@ -89,7 +93,7 @@ class ServiceController extends \BaseController
             'referencia' => $_POST["referencia"],
             'descricao' => $_POST["descricao"],
             'preco' => $_POST["preco"],
-            'idIva' => (int)$_POST["idIva"],
+            'iva_id' => (int)$_POST["iva_id"],
         );
 
         $model->update_attributes($attributes);
@@ -98,9 +102,13 @@ class ServiceController extends \BaseController
             $model->save();
             return $this->redirectToRoute('service/index');
         } else {
-            $ivasMap = $this->getIvasMap($model);
+            $ivas = Iva::find(['emvigor' => 'sim']);
 
-            return $this->renderView('service/edit', ['model' => $model, 'ivas' => $ivasMap]);
+            if ($ivas != null) {
+                $ivas = $ivas->all();
+            }
+
+            return $this->renderView('service/edit', ['model' => $model, 'ivas' => $ivas]);
         }
     }
 
@@ -125,30 +133,5 @@ class ServiceController extends \BaseController
         }
 
         return $model;
-    }
-
-
-    /**
-     * @param mixed $service
-     * @return string[]
-     * @throws \ActiveRecord\RecordNotFound
-     * O serviço é passado como parametro para saber o iva que já está adcionado ao serviço para evitar duplicados no array final
-     */
-    private function getIvasMap(mixed $service): array
-    {
-        $ivas = Iva::find(['emvigor' => 'sim'])->all(); // Obtem todos os ivas da basedados, para mostrar na select box.
-
-        // O valor da chave é definido como vazio mas no foreach é atualizado
-        $ivasMap = [$service->idiva => ""];
-        if (!empty($ivas)) {
-            //Adiciona todos os ivas ao array
-            foreach ($ivas as $iva) {
-                $key = $iva->id;
-                $value = "$iva->percentagem% - $iva->descricao";
-
-                $ivasMap[$key] = $value;
-            }
-        }
-        return $ivasMap;
     }
 }
