@@ -14,12 +14,14 @@ class EmpresaController extends \BaseController
 
     public function index()
     {
-        $empresa = Empresa::find(['id'=>1]);
+        $empresa = Empresa::find([1]);
         return $this->renderView('empresa/index', ['model' => $empresa]);
+
+        
     }
 
 
-    public function form($id)
+    public function edit($id)
     {
         $empresa = Empresa::find([$id]);
 
