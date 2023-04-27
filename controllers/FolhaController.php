@@ -122,6 +122,10 @@ class FolhaController extends \BaseController
             return $this->redirectToRoute('folha/index');
         }
 
+        if($model != Folha::$Estado_Em_Lancamento){
+            return $this->redirectToRoute('folha/index');
+        }
+
         if ($model != null) {
 
             //Delete all lines
