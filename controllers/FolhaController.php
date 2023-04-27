@@ -32,7 +32,7 @@ class FolhaController extends \BaseController
             }
         }
 
-        if ($role == \User::$Role_User_Funcionario) {
+        if ($role == \User::$Role_User_Admin) {
             $all = Folha::all();
         }
 
@@ -119,6 +119,10 @@ class FolhaController extends \BaseController
         $model = $this->findModel($id);
 
         if (!$this->havePermission($model->funcionario_id)) {
+            return $this->redirectToRoute('folha/index');
+        }
+
+        if($model != Folha::$Estado_Em_Lancamento){
             return $this->redirectToRoute('folha/index');
         }
 
