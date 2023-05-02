@@ -15,13 +15,15 @@ class UserController extends \BaseController
         }
     }
 
-    public function index(){
+    public function index()
+    {
         $users = User::all();
 
         return $this->renderView('user/index', ['users' => $users]);
     }
 
-    public function view($id){
+    public function view($id)
+    {
         $user = User::find([$id]);
 
         if (is_null($user)) {
@@ -31,7 +33,8 @@ class UserController extends \BaseController
         }
     }
 
-    public function show($id){
+    public function show($id)
+    {
         $user = User::find([$id]);
 
         if (is_null($user)) {
@@ -41,11 +44,13 @@ class UserController extends \BaseController
         }
     }
 
-    public function create(){
+    public function create()
+    {
         return $this->renderView('user/create');
     }
 
-    public function store(){
+    public function store()
+    {
 
         $attributes = array(
             'username' => $_POST["username"],
@@ -67,37 +72,64 @@ class UserController extends \BaseController
         }
     }
 
-    public function edit($id){
+    public function edit($id)
+    {
         $user = User::find([$id]);
 
         $this->renderView('user/edit', ['model' => $user]);
     }
 
-    public function update($id){
+    public function update($id)
+    {
         $user = User::find([$id]);
-        if (isset($_POST["username_edit"]) && isset($_POST["email_edit"]) && isset($_POST["telefone_edit"])
-            && isset($_POST["morada_edit"]) && isset($_POST["codpostal_edit"]) && isset($_POST["nif_edit"])
-            && isset($_POST["localidade_edit"]) && isset($_POST["password_edit"]) && isset($_POST["role_edit"])) {
 
-            $user->username = $_POST["username_edit"];
-            $user->email = $_POST["email_edit"];
-            $user->telefone = $_POST["telefone_edit"];
-            $user->morada = $_POST["morada_edit"];
-            $user->codpostal = $_POST["codpostal_edit"];
-            $user->nif = $_POST["nif_edit"];
-            $user->localidade = $_POST["localidade_edit"];
-            $user->password = $_POST["password_edit"];
-            $user->role = $_POST["role_edit"];
-
-            $user->save();
-
-            $_SESSION['active_user_role'] = $user->role;
-
-            $this->redirectToRoute('user/index');
+        if (!isset($_POST['role_edit'])){
+            $_POST['role_edit'] = $user->role;
         }
 
+        $attributes = array(
+            'username' => $_POST["username_edit"],
+            'password' => $_POST["password_edit"],
+            'email' => $_POST["email_edit"],
+            'telefone' => $_POST["telefone_edit"],
+            'nif' => $_POST["nif_edit"],
+            'morada' => $_POST["morada_edit"],
+            'codpostal' => $_POST["codpostal_edit"],
+            'localidade' => $_POST["localidade_edit"],
+            'role' => $_POST["role_edit"],
+        );
+
+        $user->update_attributes($attributes);
+        if ($user->is_valid()) {
+            $user->save();
+            return $this->renderView('user/view', ['model'=> $user]);
+        } else {
+            return $this->renderView('user/change', ['model' => $user]);
+        }
 
     }
 
+    public function change($id){
+        $user = User::find([$id]);
+
+        return $this->renderView('user/change', ['model' => $user]);
+    }
+
+    public function delete($id)
+    {
+        $user = User::find([$id]);
+
+        $folhas = \Folha::find(['cliente_id' => $user->id]);
+
+        if ($folhas == null){
+            $user->delete();
+        }
+        else{
+            $users = User::all();
+            return $this->renderView('user/index', ['erro_apagar' => 'Utilizador tem folhas associadas ao seu pefil. Não é possivel apagar!', 'users' => $users]);
+        }
+    }
 
 }
+
+

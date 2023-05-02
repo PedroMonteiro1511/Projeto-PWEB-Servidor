@@ -29,7 +29,7 @@ return [
         'index' => ['GET', 'EmpresaController', 'index'],
         'form' => ['GET', 'EmpresaController', 'form'],
         'edit' => ['GET', 'EmpresaController', 'edit'],
-        'update' => ['POST', 'EmpresaController', 'update']
+        'update' => ['POST', 'EmpresaController', 'update'],
     ],
     'service' => [
         'index' => ['GET', 'ServiceController', 'index'],
@@ -41,13 +41,15 @@ return [
         'delete' => ['GET', 'ServiceController', 'delete'],
     ],
     'user' => [
-        'index' => ['GET', 'UserController', 'index'],
+        'index' => ['GET|POST', 'UserController', 'index'],
         'edit' => ['GET', 'UserController', 'edit'],
         'update' => ['GET|POST', 'UserController', 'update'],
         'view' => ['GET|POST', 'UserController', 'view'],
         'show' => ['GET|POST', 'UserController', 'show'],
         'create' => ['GET|POST', 'UserController', 'create'],
-        'store' => ['GET|POST', 'UserController', 'store']
+        'store' => ['GET|POST', 'UserController', 'store'],
+        'delete' => ['GET|POST', 'UserController', 'delete'],
+        'change' => ['GET|POST', 'UserController', 'change']
     ],
     'folha' => [
         'index' => ['GET', 'FolhaController', 'index'],
