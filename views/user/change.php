@@ -1,6 +1,4 @@
 <style>
-
-
     /* Form styles */
     form {
         margin-top: 20PX;
@@ -8,10 +6,6 @@
         border-radius: 5px;
         padding: 40px;
         box-shadow: 0px 3px 20px #ccc;
-    }
-
-    .form-group {
-
     }
 
     label {
@@ -220,6 +214,7 @@
             <?php } ?>
         </select>
     </div>
+
     <div class="form-group" style="align-items: center; margin-top: 20px">
         <button type="submit" class="btn btn-primary">Alterar Dados!</button>
     </div>

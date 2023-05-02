@@ -9,7 +9,12 @@
 <body>
 <main class="text-center">
     <div>
+        <?php if (isset($_SESSION['active_user_id'])){
+
+         ?>
         <a href="index.php?c=empresa&a=edit&id=<?= $model->id ?>" class="btn btn-primary" role="button">Editar Dados da Empresa</a>
+
+        <?php } ?>
 
     </div>
     <br>

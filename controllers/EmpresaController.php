@@ -9,15 +9,16 @@ class EmpresaController extends \BaseController
 
     public function __construct()
     {
-        session_start();
+        $author = new \Auth();
+        if (!$author->isLoggedIn()) {
+            return $this->redirectToRoute('auth/login');
+        }
     }
 
     public function index()
     {
         $empresa = Empresa::find([1]);
         return $this->renderView('empresa/index', ['model' => $empresa]);
-
-        
     }
 
 
@@ -34,6 +35,11 @@ class EmpresaController extends \BaseController
 
     public function update($id)
     {
+        $author = new \Auth();
+        if (!$author->isLoggedIn()) {
+            return $this->redirectToRoute('auth/login');
+        }
+
         $empresa = Empresa::find([$id]);
 
         $attributes = array(

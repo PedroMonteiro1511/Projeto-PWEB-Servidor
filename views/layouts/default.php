@@ -7,15 +7,19 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
 
+
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 </head>
 <body>
 
 <!-- nav -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="index.php?c=site&a=index">BatataDoce</a>
+    <a class="navbar-brand" href="index.php?c=site&a=index">Worksheet Tracker</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -26,42 +30,39 @@
             <li class="nav-item active">
                 <a class="nav-link" href="index.php?c=site&a=index">Ínicio</a>
             </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="index.php?c=empresa&a=index">Empresa</a>
-            </li>
-            <?php if (isset($_SESSION['active_user_role']) && $_SESSION['active_user_role'] != User::$Role_User_Cliente){
-            ?>
+            <?php if (isset($_SESSION['active_user_role']) && $_SESSION['active_user_role'] != User::$Role_User_Cliente) {
+                ?>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                        aria-expanded="false">
                         Gestão
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="index.php?c=user&a=index">Gestão de Utilizadores</a></li>
                         <li>
-                            <a class="dropdown-item" href="#">Something Else</a>
+                            <a class="dropdown-item" href="index.php?c=empresa&a=index">Empresa</a>
                         </li>
+                        <li>
+                            <a class="dropdown-item" href="index.php?c=user&a=index">Gestão de Utilizadores</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="index.php?c=service&a=index">Serviços</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="index.php?c=folha&a=index">Folhas de Obra</a>
+                        </li>
+
 
                     </ul>
                 </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="index.php?c=service&a=index">Serviços</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="index.php?c=folha&a=index">Folhas de Obra</a>
-                </li>
-
                 <?php
             }
-            else{
-                ?>
-                <li class="nav-item">
-                    <a class="nav-link" href="index.php?c=folhacliente&a=index">Minhas Folhas</a>
-                </li>
-            <?php
-            }
             ?>
+
+            <li class="nav-item">
+                <a class="nav-link" href="index.php?c=folhacliente&a=index">Minhas Folhas</a>
+            </li>
+
+
         </ul>
     </div>
 
@@ -73,7 +74,7 @@
                 ?>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="index.php?c=user&a=show&id=<?=     $_SESSION['active_user_id'] ?>">
+                    <a class="nav-link" href="index.php?c=user&a=show&id=<?= $_SESSION['active_user_id'] ?>">
                         <?= Auth::get_active_user($_SESSION['active_user_id']); ?>
                     </a>
                 </li>
@@ -120,7 +121,6 @@
 </div>
 
 <!-- End View !-->
-
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

@@ -1,6 +1,3 @@
-<?php
-?>
-
 <div class="container">
     <form action="index.php?c=empresa&a=update&id=<?=$model->id ?>" method="post">
         <h4 class="display-4 text-center">Dados da Empresa</h4>

@@ -1,4 +1,8 @@
 
+$(document).ready(function() {
+    $('.select2').select2();
+});
+
 $('.btn-dark').on('click', function (e){
     e.preventDefault();
 
