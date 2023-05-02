@@ -12,9 +12,8 @@ class Folha extends \ActiveRecord\Model
         array('cliente_id', 'greater_than' => 0,'message' => 'Campo obrigatório!')
     );
 
-
     static $has_many = array(
-        array('linhas')
+        array('linhas'),
     );
 }
 

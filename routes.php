@@ -29,6 +29,7 @@ return [
         'index' => ['GET', 'EmpresaController', 'index'],
         'form' => ['GET', 'EmpresaController', 'form'],
         'edit' => ['GET', 'EmpresaController', 'edit'],
+        'update' => ['POST', 'EmpresaController', 'update']
     ],
     'service' => [
         'index' => ['GET', 'ServiceController', 'index'],
@@ -48,7 +49,7 @@ return [
         'create' => ['GET|POST', 'UserController', 'create'],
         'store' => ['GET|POST', 'UserController', 'store']
     ],
-    'folha'=>[
+    'folha' => [
         'index' => ['GET', 'FolhaController', 'index'],
         'show' => ['GET', 'FolhaController', 'show'],
         'create' => ['GET', 'FolhaController', 'create'],
@@ -58,7 +59,7 @@ return [
         'delete' => ['GET', 'FolhaController', 'delete'],
         'emitir' => ['GET', 'FolhaController', 'emitir'],
     ],
-    'linha'=>[
+    'linha' => [
         'index' => ['GET', 'LinhaController', 'index'],
         'show' => ['GET', 'LinhaController', 'show'],
         'create' => ['GET', 'LinhaController', 'create'],
@@ -67,9 +68,10 @@ return [
         'update' => ['POST', 'LinhaController', 'update'],
         'delete' => ['GET', 'LinhaController', 'delete'],
     ],
-    'folhacliente'=>[
+    'folhacliente' => [
         'index' => ['GET', 'FolhaClienteController', 'index'],
         'pay' => ['GET', 'FolhaClienteController', 'pay'],
         'submitPay' => ['POST', 'FolhaClienteController', 'submitPay'],
+        'pdf' => ['GET', 'FolhaClienteController', 'pdf'],
     ]
 ];

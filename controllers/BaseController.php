@@ -27,4 +27,10 @@ class BaseController
         $layoutPath = "./views/layouts/$layout.php";
         require_once ($layoutPath);
     }
+
+    protected function renderViewPDF($view, $params = [])
+    {
+        extract($params);
+        require_once ('views/folhacliente/pdf.php');
+    }
 }

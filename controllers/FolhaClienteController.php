@@ -1,9 +1,9 @@
 <?php
+
 namespace app\controllers;
 
 class FolhaClienteController extends \BaseController
 {
-
 
     public function __construct()
     {
@@ -17,13 +17,19 @@ class FolhaClienteController extends \BaseController
 
     public function index()
     {
+        $all = \Folha::find('all', ['cliente_id' => $_SESSION['active_user_id']]);
 
-        $all = \Folha::find(['cliente_id' => $_SESSION['active_user_id']]);
-        if (!is_null($all)) {
-            $all = $all->all();
-        }else{
-            $all = [];
+        if (count($all) == 0) {
+            return $this->renderView('folhacliente/index', ['folhas' => $all]);
         }
+
+        //Remove folhas em lançamento
+        foreach ($all as $i => $folha) {
+            if ($folha->estado == \Folha::$Estado_Em_Lancamento) {
+                unset($all[$i]);
+            }
+        }
+
         return $this->renderView('folhacliente/index', ['folhas' => $all]);
     }
 
@@ -34,7 +40,11 @@ class FolhaClienteController extends \BaseController
             return $this->redirectToRoute('folhacliente/index');
         }
 
-        return $this->renderView('folhacliente/pagamento');
+        if($model->estado == \Folha::$Estado_Paga){
+            return $this->redirectToRoute('folhacliente/index');
+        }
+
+        return $this->renderView('folhacliente/pagamento', ['model' => $model]);
     }
 
     public function submitPay($id)
@@ -46,7 +56,18 @@ class FolhaClienteController extends \BaseController
         return $this->redirectToRoute('folhacliente/index');
     }
 
-    private function findModel($id)
+    public function pdf($id)
+    {
+        $model = $this->findModel($id);
+        if (is_null($model)) {
+            return $this->redirectToRoute('folhacliente/index');
+        }
+
+        return $this->renderViewPDF('folhacliente/pdf', ['model' => $model]);
+    }
+
+    private
+    function findModel($id)
     {
 
         try {

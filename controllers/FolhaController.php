@@ -26,10 +26,7 @@ class FolhaController extends \BaseController
         $role = $_SESSION['active_user_role'];
 
         if ($role == \User::$Role_User_Funcionario) {
-            $all = Folha::find(['funcionario_id' => $_SESSION['active_user_id']]);
-            if (!is_null($all)) {
-                $all = $all->all();
-            }
+            $all = Folha::find('all', ['funcionario_id' => $_SESSION['active_user_id']]);
         }
 
         if ($role == \User::$Role_User_Admin) {
@@ -57,11 +54,7 @@ class FolhaController extends \BaseController
 
     public function create()
     {
-        $clientes = \User::find(['role' => \User::$Role_User_Cliente]);
-
-        if ($clientes != null) {
-            $clientes = $clientes->all();
-        }
+        $clientes = \User::find('all',['role' => \User::$Role_User_Cliente]);
 
         return $this->renderView('folha/create', ['clientes' => $clientes]);
     }
@@ -82,11 +75,7 @@ class FolhaController extends \BaseController
             return $this->redirectToRoute('linha/index', ['id' => $folha->id]);
 
         } else {
-            $clientes = \User::find(['role' => \User::$Role_User_Cliente]);
-
-            if ($clientes != null) {
-                $clientes = $clientes->all();
-            }
+            $clientes = \User::find('all',['role' => \User::$Role_User_Cliente]);
             return $this->renderView('folha/create', ['model' => $folha, 'clientes' => $clientes]);
         }
     }
@@ -122,7 +111,7 @@ class FolhaController extends \BaseController
             return $this->redirectToRoute('folha/index');
         }
 
-        if($model != Folha::$Estado_Em_Lancamento){
+        if ($model->estado != Folha::$Estado_Em_Lancamento) {
             return $this->redirectToRoute('folha/index');
         }
 

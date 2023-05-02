@@ -21,12 +21,10 @@
                             <td><?= $folha->ivatotal ?>€</td>
                             <td><?=$folha->estado == Folha::$Estado_Paga ? 'Paga' : 'Por pagar' ?></td>
                             <td>
-                                <a href="index.php?c=folha&a=show&id=<?= $folha->id ?>"
+                                <a href="index.php?c=folhacliente&a=pdf&id=<?= $folha->id ?>"
                                    class="btn btn-primary" role="button">Show</a>
-                                <a href="index.php?c=linha&a=index&id=<?= $folha->id ?>"
-                                   class="btn btn-primary" role="button">Edit</a>
-                                <a href="index.php?c=folha&a=delete&id=<?= $folha->id ?>"
-                                   class="btn btn-danger">Delete</a>
+                                <a href="index.php?c=folhacliente&a=pay&id=<?= $folha->id ?>"
+                                   class="btn btn-primary" role="button">Pay</a>
                             </td>
                         </tr>
                     <?php } ?>
