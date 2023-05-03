@@ -71,14 +71,14 @@ class LinhaController extends \BaseController
         $attributes = array(
             'quantidade' => (int) $_POST["quantidade"],
             'folha_id' => (int) $_POST['folha_id'],
-            'servico_id' => (int) $_POST['servico_id']
+            'service_id' => (int) $_POST['service_id']
         );
 
         $linha = new Linha($attributes);
         if ($linha->is_valid()) {
 
             //obter o serviço
-            $service = \Service::find(['id' => $_POST['servico_id']]);
+            $service = \Service::find(['id' => $_POST['service_id']]);
             $valorService = $service->preco;
             $valorIvaService = $service->iva->percentagem;
 

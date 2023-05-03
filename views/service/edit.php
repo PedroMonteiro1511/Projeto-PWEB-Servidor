@@ -8,7 +8,8 @@
         <label for="referencia">Referência:</label>
         <input type="text" class="form-control" name="referencia" maxlength="10" value="<?= $model->referencia ?>">
     </div>
-    <p style="color: red"><?php
+    <p style="color: red">
+        <?php
         if (isset($model->errors)) {
             if (is_array($model->errors->on('referencia'))) {
                 foreach ($model->errors->on('referencia') as $error) {
@@ -25,7 +26,8 @@
         <label for="description">Descrição:</label>
         <input type="text" class="form-control" name="descricao" value="<?= $model->descricao ?>">
     </div>
-    <p style="color: red"><?php
+    <p style="color: red">
+        <?php
         if (isset($model->errors)) {
             if (is_array($model->errors->on('descricao'))) {
                 foreach ($model->errors->on('descricao') as $error) {
@@ -42,7 +44,8 @@
         <label for="preco">Preço:</label>
         <input type="text" class="form-control" name="preco" value="<?= $model->preco ?>">
     </div>
-    <p style="color: red"><?php
+    <p style="color: red">
+        <?php
         if (isset($model->errors)) {
             if (is_array($model->errors->on('preco'))) {
                 foreach ($model->errors->on('preco') as $error) {
@@ -60,8 +63,7 @@
         <select class="form-control" name="iva_id" id="iva_id">
             <?php foreach ($ivas as $iva): ?>
                 <?php if ($iva->id == $model->iva_id) { ?>
-                    <option value="<?= $iva->id ?>"
-                            selected><?= $iva->percentagem . "% - " . $iva->descricao; ?> </option>
+                    <option value="<?= $iva->id ?>" selected><?= $iva->percentagem . "% - " . $iva->descricao; ?> </option>
                 <?php } else { ?>
                     <option value="<?= $iva->id ?>"> <?= $iva->percentagem . "% - " . $iva->descricao; ?></option>
                 <?php }
@@ -73,4 +75,3 @@
         <button type="submit" class="btn btn-success" name="update">Guardar</button>
     </p>
 </form>
-

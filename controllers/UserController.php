@@ -22,7 +22,7 @@ class UserController extends \BaseController
         return $this->renderView('user/index', ['users' => $users]);
     }
 
-    public function view($id)  // 
+    public function view($id) // 
     {
         $user = User::find([$id]);
 
@@ -83,7 +83,7 @@ class UserController extends \BaseController
     {
         $user = User::find([$id]);
 
-        if (!isset($_POST['role_edit'])){
+        if (!isset($_POST['role_edit'])) {
             $_POST['role_edit'] = $user->role;
         }
 
@@ -102,14 +102,15 @@ class UserController extends \BaseController
         $user->update_attributes($attributes);
         if ($user->is_valid()) {
             $user->save();
-            return $this->renderView('user/view', ['model'=> $user]);
+            return $this->renderView('user/view', ['model' => $user]);
         } else {
             return $this->renderView('user/change', ['model' => $user]);
         }
 
     }
 
-    public function edit($id){
+    public function edit($id)
+    {
         $user = User::find([$id]);
 
         return $this->renderView('user/edit', ['model' => $user]);
@@ -121,15 +122,12 @@ class UserController extends \BaseController
 
         $folhas = \Folha::find(['cliente_id' => $user->id]);
 
-        if ($folhas == null){
+        if ($folhas == null) {
             $user->delete();
-        }
-        else{
+        } else {
             $users = User::all();
             return $this->renderView('user/index', ['erro_apagar' => 'Utilizador tem folhas associadas ao seu pefil. Não é possivel apagar!', 'users' => $users]);
         }
     }
 
 }
-
-

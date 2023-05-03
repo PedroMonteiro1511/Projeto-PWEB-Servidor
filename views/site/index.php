@@ -116,7 +116,6 @@
     <section id="hero">
         <h2>Worksheet Tracker - Acompanhe suas Folhas</h2>
         <p>O Worksheet Tracker é a maneira mais fácil de gerenciar suas tarefas e acompanhar seu progresso. Com nossa interface simples e intuitiva, você pode acompanhar seu trabalho e atingir seus objetivos.</p>
-        <a href="index.php?c=site&a=signup" class="btnthis btn-primary">Registar Agora!</a>
     </section>
     <hr>
     <section id="about">
