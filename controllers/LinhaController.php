@@ -21,6 +21,10 @@ class LinhaController extends \BaseController
     public function index($id)
     {
         $folha = Folha::find([$id]);
+        $empresa = \Empresa::first();
+
+        $cliente_id = $folha->cliente_id;
+        $cliente = \User::find([$cliente_id]);
 
         if (is_null($folha)) {
             return $this->redirectToRoute('folha/index');
@@ -34,7 +38,7 @@ class LinhaController extends \BaseController
             return $this->redirectToRoute('folha/index');
         }
 
-        return $this->renderView('linha/index', ['folha' => $folha]);
+        return $this->renderView('linha/index', ['folha' => $folha, 'empresa' => $empresa, 'cliente' => $cliente]);
     }
 
     public function create($id)
@@ -50,11 +54,13 @@ class LinhaController extends \BaseController
 
         $services = \Service::all();
 
-        return $this->renderView('linha/create',
+        return $this->renderView(
+            'linha/create',
             [
                 'folha_id' => $id,
                 'services' => $services
-            ]);
+            ]
+        );
     }
 
     public function store()
@@ -63,9 +69,9 @@ class LinhaController extends \BaseController
         $folha_id = $_POST['folha_id'];
 
         $attributes = array(
-            'quantidade' => (int)$_POST["quantidade"],
-            'folha_id' => (int)$_POST['folha_id'],
-            'servico_id' => (int)$_POST['servico_id']
+            'quantidade' => (int) $_POST["quantidade"],
+            'folha_id' => (int) $_POST['folha_id'],
+            'servico_id' => (int) $_POST['servico_id']
         );
 
         $linha = new Linha($attributes);
@@ -83,10 +89,12 @@ class LinhaController extends \BaseController
             $valorLinha = $valorService * $quantidade;
             $valorIvaLinha = (($valorIvaService * $valorLinha) / 100) + $valorLinha;
 
-            $linha->update_attributes(array(
-                'valor' => $valorLinha,
-                'valorIva' => $valorIvaLinha,
-            ));
+            $linha->update_attributes(
+                array(
+                    'valor' => $valorLinha,
+                    'valorIva' => $valorIvaLinha,
+                )
+            );
 
             $linha->save();
 
@@ -100,10 +108,12 @@ class LinhaController extends \BaseController
             $totalFolha = $totalFolha + $valorLinha;
             $totalIvaFolha = $totalIvaFolha + $valorIvaLinha;
 
-            $folha->update_attributes(array(
-                'valorTotal' => $totalFolha,
-                'ivaTotal' => $totalIvaFolha
-            ));
+            $folha->update_attributes(
+                array(
+                    'valorTotal' => $totalFolha,
+                    'ivaTotal' => $totalIvaFolha
+                )
+            );
 
             $folha->save();
 
@@ -143,10 +153,12 @@ class LinhaController extends \BaseController
                 $totalFolha = $totalFolha - $valor;
                 $totalIvaFolha = $totalIvaFolha - $valorIva;
 
-                $folha->update_attributes(array(
-                    'valorTotal' => $totalFolha,
-                    'ivaTotal' => $totalIvaFolha
-                ));
+                $folha->update_attributes(
+                    array(
+                        'valorTotal' => $totalFolha,
+                        'ivaTotal' => $totalIvaFolha
+                    )
+                );
 
                 $folha->save();
             }

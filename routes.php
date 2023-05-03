@@ -63,7 +63,7 @@ return [
         'change' => ['GET|POST', 'UserController', 'change']
     ],
     'folha' => [
-        'index' => ['GET', 'FolhaController', 'index'],
+        'index' => ['GET|POST', 'FolhaController', 'index'],
         'show' => ['GET', 'FolhaController', 'show'],
         'create' => ['GET', 'FolhaController', 'create'],
         'store' => ['POST', 'FolhaController', 'store'],

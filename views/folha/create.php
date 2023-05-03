@@ -1,9 +1,21 @@
 <h4 class="display-4 text-center">Folha de obra</h4>
 <hr>
 <section>
-    <h3>Nome da empresa</h3>
-    <p>Endereço da empresa, Cidade</p>
-    <p>Telefone: (00) 0000-0000 | Email: email@email.com</p>
+    <h3>Dados Empresa:</h3>
+    <h5>
+        <?= $empresa->desigsocial ?>
+    </h5>
+    <p>
+        <?= $empresa->morada ?>,
+        <?= $empresa->localidade ?>,
+        <?= $empresa->codpostal ?>
+    </p>
+    <p>Telefone:
+        <?= $empresa->telefone ?> | Email:
+        <?= $empresa->email ?> | NIF:
+        <?= $empresa->nif ?>
+
+    </p>
 </section>
 
 <hr>
@@ -22,7 +34,8 @@
                 <?php endforeach; ?>
             </select>
         </div>
-        <p style="color: red"><?php
+        <p style="color: red">
+            <?php
             if (isset($model->errors)) {
                 if (is_array($model->errors->on('cliente_id'))) {
                     foreach ($model->errors->on('cliente_id') as $error) {
@@ -41,8 +54,3 @@
         </p>
     </form>
 </section>
-
-
-
-
-

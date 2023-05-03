@@ -25,8 +25,12 @@ class FolhaController extends \BaseController
         $all = [];
         $role = $_SESSION['active_user_role'];
 
+
         if ($role == \User::$Role_User_Funcionario) {
-            $all = Folha::find('all', ['funcionario_id' => $_SESSION['active_user_id']]);
+
+            $all = Folha::find('all', [
+                'funcionario_id' => $_SESSION['active_user_id'],
+            ]);
         }
 
         if ($role == \User::$Role_User_Admin) {
@@ -49,14 +53,24 @@ class FolhaController extends \BaseController
             return $this->redirectToRoute('folha/index');
         }
 
-        return $this->renderView('folha/show', ['model' => $model]);
+        $empresa = \Empresa::first();
+        $cliente = \User::find([$model->cliente_id]);
+        $funcionario = \User::find([$model->funcionario_id]);
+
+        return $this->renderView('folha/show', [
+            'model' => $model,
+            'empresa' => $empresa,
+            'cliente' => $cliente,
+            'funcionario' => $funcionario
+        ]);
     }
 
     public function create()
     {
-        $clientes = \User::find('all',['role' => \User::$Role_User_Cliente]);
+        $clientes = \User::find('all', ['role' => \User::$Role_User_Cliente]);
+        $empresa = \Empresa::first();
 
-        return $this->renderView('folha/create', ['clientes' => $clientes]);
+        return $this->renderView('folha/create', ['clientes' => $clientes, 'empresa' => $empresa]);
     }
 
     public function store()
@@ -65,8 +79,8 @@ class FolhaController extends \BaseController
             'valorTotal' => 0,
             'ivaTotal' => 0,
             'estado' => Folha::$Estado_Em_Lancamento,
-            'cliente_id' => (int)$_POST["idCliente"],
-            'funcionario_id' => (int)$_POST["idFuncionario"],
+            'cliente_id' => (int) $_POST["idCliente"],
+            'funcionario_id' => (int) $_POST["idFuncionario"],
         );
 
         $folha = new Folha($attributes);
@@ -75,8 +89,13 @@ class FolhaController extends \BaseController
             return $this->redirectToRoute('linha/index', ['id' => $folha->id]);
 
         } else {
-            $clientes = \User::find('all',['role' => \User::$Role_User_Cliente]);
-            return $this->renderView('folha/create', ['model' => $folha, 'clientes' => $clientes]);
+            $clientes = \User::find('all', ['role' => \User::$Role_User_Cliente]);
+            $empresa = \Empresa::first();
+            return $this->renderView('folha/create', [
+                'model' => $folha,
+                'clientes' => $clientes,
+                'empresa' => $empresa
+            ]);
         }
     }
 
