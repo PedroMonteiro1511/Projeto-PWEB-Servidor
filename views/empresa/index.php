@@ -9,6 +9,7 @@
 <body>
 <main class="text-center">
     <div>
+        <!-- Adicionar um if para poder verificar se exite sessão iniciada de um administrador para alterar os dados da empresa -->
         <a href="index.php?c=empresa&a=form&id=<?= $model->id ?>" class="btn btn-primary" role="button">Editar Dados da Empresa</a>
 
     </div>

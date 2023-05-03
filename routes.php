@@ -5,6 +5,7 @@ require_once 'controllers/SiteController.php';
 require_once 'controllers/AuthController.php';
 require_once 'controllers/ServiceController.php';
 require_once 'controllers/EmpresaController.php';
+require_once 'controllers/IvasController.php';
 
 
 return [
@@ -39,6 +40,15 @@ return [
     'index' => ['GET', 'EmpresaController', 'index'],
     'form' => ['GET', 'EmpresaController', 'form'],
         'update' => ['POST', 'EmpresaController', 'update']
-]
+    ],
+    'ivas' => [
+    'index' => ['GET', 'IvasController', 'index'],
+    'show' => ['GET', 'IvasController', 'show'],
+    'create' => ['GET', 'IvasController', 'create'],
+    'store' => ['POST', 'IvasController', 'store'],
+    'edit' => ['GET', 'IvasController', 'edit'],
+    'update' => ['POST', 'IvasController', 'update'],
+    'delete' => ['GET', 'IvasController', 'delete'],
+],
 ];
 
