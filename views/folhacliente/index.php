@@ -44,7 +44,7 @@
                                         ?>
                                 </td>
                                 <td>
-                                    <a href="index.php?c=folhacliente&a=pdf&id=<?= $folha->id ?>" class="btn btn-primary"
+                                    <a href="index.php?c=folhacliente&a=show&id=<?= $folha->id ?>" class="btn btn-primary"
                                         role="button">Show</a>
                                     <a href="index.php?c=folhacliente&a=pay&id=<?= $folha->id ?>" class="btn btn-primary"
                                         role="button">Pay</a>

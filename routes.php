@@ -5,7 +5,7 @@ require_once 'controllers/SiteController.php';
 require_once 'controllers/AuthController.php';
 require_once 'controllers/ServiceController.php';
 require_once 'controllers/EmpresaController.php';
-require_once 'controllers/IvasController.php';
+require_once 'controllers/IvaController.php';
 require_once 'controllers/UserController.php';
 require_once 'controllers/FolhaController.php';
 require_once 'controllers/LinhaController.php';
@@ -32,14 +32,14 @@ return [
         'edit' => ['GET', 'EmpresaController', 'edit'],
         'update' => ['POST', 'EmpresaController', 'update'],
     ],
-    'ivas' => [
-        'index' => ['GET', 'IvasController', 'index'],
-        'show' => ['GET', 'IvasController', 'show'],
-        'create' => ['GET', 'IvasController', 'create'],
-        'store' => ['POST', 'IvasController', 'store'],
-        'edit' => ['GET', 'IvasController', 'edit'],
-        'update' => ['POST', 'IvasController', 'update'],
-        'delete' => ['GET', 'IvasController', 'delete'],
+    'iva' => [
+        'index' => ['GET', 'IvaController', 'index'],
+        'show' => ['GET', 'IvaController', 'show'],
+        'create' => ['GET', 'IvaController', 'create'],
+        'store' => ['POST', 'IvaController', 'store'],
+        'edit' => ['GET', 'IvaController', 'edit'],
+        'update' => ['POST', 'IvaController', 'update'],
+        'delete' => ['GET', 'IvaController', 'delete'],
     ],
     'service' => [
         'index' => ['GET', 'ServiceController', 'index'],
@@ -85,6 +85,6 @@ return [
         'index' => ['GET', 'FolhaClienteController', 'index'],
         'pay' => ['GET', 'FolhaClienteController', 'pay'],
         'submitPay' => ['POST', 'FolhaClienteController', 'submitPay'],
-        'pdf' => ['GET', 'FolhaClienteController', 'pdf'],
+        'show' => ['GET', 'FolhaClienteController', 'show'],
     ]
 ];
