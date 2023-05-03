@@ -1,6 +1,7 @@
 <?php
 
 use ActiveRecord\Model;
+
 class User extends Model
 {
     public static $Role_User_Cliente = "cliente";
@@ -20,8 +21,8 @@ class User extends Model
     );
 
     static $validates_numericality_of = array(
-        array('telefone', 'greater_than' => 0,'message' => 'Inválido Número'),
-        array('nif', 'greater_than' => 0,'message' => 'Inválido Nif')
+        array('telefone', 'greater_than' => 0, 'message' => 'Inválido Número'),
+        array('nif', 'greater_than' => 0, 'message' => 'Inválido Nif')
     );
 
     static $validates_uniqueness_of = array(
@@ -38,9 +39,28 @@ class User extends Model
     );
 
     static $validates_format_of = array(
-        array('email', 'with' =>
-            '/^[^0-9][A-z0-9_]+([.][A-z0-9_]+)*[@][A-z0-9_]+([.][A-z0-9_]+)*[.][A-z]{2,4}$/', 'message' => 'E-mail com formatação incorreta!'),
-        array('codpostal', 'with' =>
-            '/^\d{4}-\d{3}?$/', 'message' => 'Código Postal com formatação incorreta!'),
+        array(
+            'email',
+            'with' =>
+            '/^[^0-9][A-z0-9_]+([.][A-z0-9_]+)*[@][A-z0-9_]+([.][A-z0-9_]+)*[.][A-z]{2,4}$/',
+            'message' => 'E-mail com formatação incorreta!'
+        ),
+        array(
+            'codpostal',
+            'with' =>
+            '/^\d{4}-\d{3}?$/',
+            'message' => 'Código Postal com formatação incorreta!'
+        ),
     );
+
+
+    public static function getUsernameById($id)
+    {
+        $user = self::find([$id]);
+        if (is_null($user)) {
+            return "";
+        }
+
+        return $user->username;
+    }
 }
