@@ -42,6 +42,7 @@ return [
     ],
     'user' => [
         'index' => ['GET|POST', 'UserController', 'index'],
+        'update_profile' => ['GET', 'UserController', 'update_profile'],
         'edit' => ['GET', 'UserController', 'edit'],
         'update' => ['GET|POST', 'UserController', 'update'],
         'view' => ['GET|POST', 'UserController', 'view'],

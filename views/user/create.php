@@ -66,7 +66,8 @@
             }
             ?>
         </p>
-    </div>
+    </div>   
+
     <div class="form-group">
         <label for="password">Password:</label>
         <input value="<?php if (isset($model)) {

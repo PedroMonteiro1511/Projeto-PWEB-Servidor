@@ -22,7 +22,7 @@ class UserController extends \BaseController
         return $this->renderView('user/index', ['users' => $users]);
     }
 
-    public function view($id)
+    public function view($id)  // 
     {
         $user = User::find([$id]);
 
@@ -72,11 +72,11 @@ class UserController extends \BaseController
         }
     }
 
-    public function edit($id)
+    public function update_profile($id)
     {
         $user = User::find([$id]);
 
-        $this->renderView('user/edit', ['model' => $user]);
+        $this->renderView('user/update_profile', ['model' => $user]);
     }
 
     public function update($id)
@@ -109,10 +109,10 @@ class UserController extends \BaseController
 
     }
 
-    public function change($id){
+    public function edit($id){
         $user = User::find([$id]);
 
-        return $this->renderView('user/change', ['model' => $user]);
+        return $this->renderView('user/edit', ['model' => $user]);
     }
 
     public function delete($id)

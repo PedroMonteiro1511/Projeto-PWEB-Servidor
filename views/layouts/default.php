@@ -28,7 +28,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="index.php?c=site&a=index">Ínicio</a>
+            <a class="nav-link" href="index.php?c=site&a=index">Ínicio</a>
             </li>
             <?php if (isset($_SESSION['active_user_role']) && $_SESSION['active_user_role'] != User::$Role_User_Cliente) {
                 ?>
@@ -74,7 +74,7 @@
                 ?>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="index.php?c=user&a=show&id=<?= $_SESSION['active_user_id'] ?>">
+                    <a class="nav-link" href="index.php?c=user&a=view&id=<?= $_SESSION['active_user_id'] ?>">
                         <?= Auth::get_active_user($_SESSION['active_user_id']); ?>
                     </a>
                 </li>
