@@ -1,5 +1,16 @@
 <?php
 
+if (isset($erro_apagar)) {
+    ?>
+
+    <div class="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <strong>Erro!</strong> <?= $erro_apagar ?>
+    </div>
+
+    <?php
+}
+
 ?>
 <div class="container">
     <div class="mt-5">
