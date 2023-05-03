@@ -71,9 +71,9 @@
                             <td style="color: red"> <?= $user->role ?></td>
 
                             <td>
-                                <a href="index.php?c=user&a=view&id=<?= $user->id ?>"
+                                <a href="index.php?c=user&a=show&id=<?= $user->id ?>"
                                    class="btn btn-primary" role="button">Show</a>
-                                <a href="index.php?c=user&a=change&id=<?= $user->id ?>"
+                                <a href="index.php?c=user&a=edit&id=<?= $user->id ?>"
                                    class="btn btn-primary" role="button">Edit</a>
                                 <a href="index.php?c=user&a=delete&id=<?= $user->id ?>"
                                    class="btn btn-danger">Delete</a>

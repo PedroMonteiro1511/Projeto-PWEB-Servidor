@@ -1,110 +1,221 @@
 <style>
-
-    .col-xs-12 {
-        margin: 5px !important;
+    /* Form styles */
+    form {
+        margin-top: 20PX;
+        background-color: #fff;
+        border-radius: 5px;
+        padding: 40px;
+        box-shadow: 0px 3px 20px #ccc;
     }
 
-    hr:not([size]) {
-        height: 30px !important;
+    label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
     }
 
-    #leftPanel {
-        background-color: #0079ac;
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    input[type="tel"] {
+        width: 100%;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        color: #333;
+    }
+
+    input[type="text"]:focus,
+    input[type="password"]:focus,
+    input[type="email"]:focus,
+    input[type="tel"]:focus {
+        outline: none;
+        border-color: #3498db;
+    }
+
+    input[type="submit"] {
+        background-color: #3498db;
         color: #fff;
-        /*     text-align: center; */
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out;
     }
 
-    #rightPanel {
-        min-height: 500px;
-        min_width: 300px;
+    input[type="submit"]:hover {
+        background-color: #2980b9;
     }
 
-    .row{
-        --bs-gutter-x: 0rem !important;
+    .form-text {
+        font-size: 14px;
+        color: #777;
     }
-
 </style>
-
-<div class="container" style="margin-top: 2%">
-    <div class="col-md-12">
-        <form role="form" action="index.php?c=user&a=update&id=<?= $model->id ?>" method="post">
-            <h2>Alterar os dados do Perfil.</h2>
-            <hr class="colorgraph">
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <label for="username_edit"> Username: </label>
-                        <input type="text" name="username_edit" id="username_edit" class="form-control input-lg"
-                               placeholder="username" tabindex="1" value="<?= $model->username ?>">
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <label for="email_edit">Email: </label>
-                    <input type="email" name="email_edit" id="email_edit" class="form-control input-lg"
-                           placeholder="Email Address"
-                           tabindex="4" value="<?= $model->email ?>" >
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-3">
-                    <div class="form-group">
-                        <label for="telefone_edit">Telefone: </label>
-                        <input type="text" name="telefone_edit" id="telefone_edit" class="form-control input-lg"
-                               placeholder="Telefone" tabindex="1" value="<?= $model->telefone ?>">
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-3">
-                    <div class="form-group">
-                        <label for="morada_edit">Morada: </label>
-                        <input type="text" name="morada_edit" id="morada_edit"
-                               class="form-control input-lg" placeholder="Morada" tabindex="6" value="<?= $model->morada ?>">
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-3">
-                    <div class="form-group">
-                        <label for="codpostal_edit">Codigo Postal: </label>
-                        <input type="text" name="codpostal_edit" id="codpostal_edit"
-                               class="form-control input-lg" placeholder="Codigo Postal: " tabindex="6" value="<?= $model->codpostal ?>">
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-3">
-                    <div class="form-group">
-                        <label for="nif_edit">NIF: </label>
-                        <input type="text" name="nif_edit" id="nif_edit"
-                               class="form-control input-lg" tabindex="6" value="<?= $model->nif ?>">
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-7">
-                    <div class="form-group">
-                        <label for="localidade_edit">Localidade: </label>
-                        <input type="text" name="localidade_edit" id="localidade_edit" class="form-control input-lg"
-                               placeholder="Localidade" tabindex="1" value="<?= $model->localidade ?>">
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-7">
-                    <div class="form-group">
-                        <label for="password_edit">Password: </label>
-                        <input type="password" name="password_edit" id="password_edit" class="form-control input-lg"
-                               placeholder="Localidade" tabindex="1" value="<?= $model->password ?>">
-                    </div>
-                </div>
-            </div>
-            <div class="row" style="margin-top: 10px">
-
-                <button class="btn btn-success" type="submit">Confirmar</button>
-
-            </div>
-            <hr class="colorgraph">
-
-        </form>
-
+<form action="index.php?c=user&a=update&id=<?= $model->id ?>" method="post">
+    <div class="form-group">
+        <label for="username_edit">Username:</label>
+        <input value="<?php if (isset($model)) {
+            echo $model->username;
+        } ?>" type="text" id="usernameusername_edit" name="username_edit" placeholder="Username" required>
+        <p style="color: red"><?php
+            if (isset($model->errors)) {
+                if (is_array($model->errors->on('username'))) {
+                    foreach ($model->errors->on('username') as $error) {
+                        echo $error . '<br>';
+                    }
+                } else {
+                    echo $model->errors->on('username');
+                }
+            }
+            ?>
+        </p>
     </div>
-</div>
-</div>
-</div>
+    <div class="form-group">
+        <label for="password_edit">Password:</label>
+        <input value="<?php if (isset($model)) {
+            echo $model->password;
+        } ?>" type="password" id="password_edit" name="password_edit" placeholder="Password" required>
+        <p style="color: red"><?php
+            if (isset($model->errors)) {
+                if (is_array($model->errors->on('password'))) {
+                    foreach ($model->errors->on('password') as $error) {
+                        echo $error . '<br>';
+                    }
+                } else {
+                    echo $model->errors->on('password');
+                }
+            }
+            ?>
+        </p>
+    </div>
+    <div class="form-group">
+        <label for="email_edit">Email:</label>
+        <input value="<?php if (isset($model)) {
+            echo $model->email;
+        } ?>" type="email" id="email_edit" name="email_edit" placeholder="Email" required>
+        <p style="color: red"><?php
+            if (isset($model->errors)) {
+                if (is_array($model->errors->on('email'))) {
+                    foreach ($model->errors->on('email') as $error) {
+                        echo $error . '<br>';
+                    }
+                } else {
+                    echo $model->errors->on('email');
+                }
+            }
+            ?>
+        </p>
+    </div>
+    <div class="form-group">
+        <label for="telefone_edit">Telefone:</label>
+        <input value="<?php if (isset($model)) {
+            echo $model->telefone;
+        } ?>" type="tel" id="telefone_edit" name="telefone_edit" maxlength="9" placeholder="Numero de Telefone" required>
+        <p style="color: red"><?php
+            if (isset($model->errors)) {
+                if (is_array($model->errors->on('telefone'))) {
+                    foreach ($model->errors->on('telefone') as $error) {
+                        echo $error . '<br>';
+                    }
+                } else {
+                    echo $model->errors->on('telefone');
+                }
+            }
+            ?>
+        </p>
+    </div>
+    <div class="form-group">
+        <label for="nif_edit">NIF:</label>
+        <input value="<?php if (isset($model)) {
+            echo $model->nif;
+        } ?>" type="text" id="nif_edit" name="nif_edit" placeholder="Numero NIF" maxlength="9" required>
+        <p style="color: red"><?php
+            if (isset($model->errors)) {
+                if (is_array($model->errors->on('nif'))) {
+                    foreach ($model->errors->on('nif') as $error) {
+                        echo $error . '<br>';
+                    }
+                } else {
+                    echo $model->errors->on('nif');
+                }
+            }
+            ?>
+        </p>
+    </div>
+    <div class="form-group">
+        <label for="morada_edit">Morada:</label>
+        <input value="<?php if (isset($model)) {
+            echo $model->morada;
+        } ?>" type="text" id="morada_edit" name="morada_edit" placeholder="Morada" required>
+        <p style="color: red"><?php
+            if (isset($model->errors)) {
+                if (is_array($model->errors->on('morada'))) {
+                    foreach ($model->errors->on('morada') as $error) {
+                        echo $error . '<br>';
+                    }
+                } else {
+                    echo $model->errors->on('morada');
+                }
+            }
+            ?>
+        </p>
+    </div>
+    <div class="form-group">
+        <label for="codpostal_edit">Código Postal:</label>
+        <input value="<?php if (isset($model)) {
+            echo $model->codpostal;
+        } ?>" type="text" id="codpostal_edit" name="codpostal_edit" pattern="[0-9]{4}-[0-9]{3}" placeholder="Código postal" required>
+        <p style="color: red"><?php
+            if (isset($model->errors)) {
+                if (is_array($model->errors->on('codpostal'))) {
+                    foreach ($model->errors->on('codpostal') as $error) {
+                        echo $error . '<br>';
+                    }
+                } else {
+                    echo $model->errors->on('codpostal');
+                }
+            }
+            ?>
+        </p>
+        <small class="form-text text-muted">Format: 1234-567</small>
+    </div>
+    <div class="form-group">
+        <label for="localidade_edit">Localidade:</label>
+        <input value="<?php if (isset($model)) {
+            echo $model->localidade;
+        } ?>" type="text" id="localidade_edit" name="localidade_edit" placeholder="Localidade" required>
+        <p style="color: red"><?php
+            if (isset($model->errors)) {
+                if (is_array($model->errors->on('localidade'))) {
+                    foreach ($model->errors->on('localidade') as $error) {
+                        echo $error . '<br>';
+                    }
+                } else {
+                    echo $model->errors->on('localidade');
+                }
+            }
+            ?>
+        </p>
+    </div>
+    <div class="form-group">
+        <label for="role_edit">Role:</label>
+        <select class="form-control" name="role_edit" id="role_edit">
+            <?php if ($_SESSION['active_user_role'] != User::$Role_User_Cliente){ ?>
+                <option value="<?= User::$Role_User_Cliente ?>" <?php if (User::$Role_User_Cliente == $model->role){?>selected <?php } ?>><?= User::$Role_User_Cliente ?></option>
+                <?php
+            }
+            if ($_SESSION['active_user_role'] == User::$Role_User_Admin){
+                ?>
+                <option value="<?= User::$Role_User_Funcionario ?>" <?php if (User::$Role_User_Funcionario == $model->role){?>selected <?php } ?>><?= User::$Role_User_Funcionario ?></option>
+                <option value="<?= User::$Role_User_Admin ?>" <?php if (User::$Role_User_Admin == $model->role){?>selected <?php } ?>><?= User::$Role_User_Admin ?></option>
+            <?php } ?>
+        </select>
+    </div>
+
+    <div class="form-group" style="align-items: center; margin-top: 20px">
+        <button type="submit" class="btn btn-primary">Alterar Dados!</button>
+    </div>
+</form>
