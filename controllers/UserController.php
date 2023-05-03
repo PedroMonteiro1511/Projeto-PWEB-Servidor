@@ -25,23 +25,15 @@ class UserController extends \BaseController
     public function view($id)  // 
     {
         $user = User::find([$id]);
+        return $this->renderView('user/view', ['model' => $user]);
 
-        if (is_null($user)) {
-            return $this->redirectToRoute('site/404'); //error page
-        } else {
-            return $this->renderView('user/view', ['model' => $user]);
-        }
     }
 
     public function show($id)
     {
         $user = User::find([$id]);
 
-        if (is_null($user)) {
-            return $this->redirectToRoute('site/404'); //error page
-        } else {
-            return $this->renderView('user/show', ['model' => $user]);
-        }
+        return $this->renderView('user/show', ['model' => $user]);
     }
 
     public function create()
