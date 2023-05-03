@@ -8,14 +8,16 @@ class BaseController
      * @param string $action The action of the route to redirect to.
      * @param array $params Optional query parameters to include in the redirect URL.
      */
-    protected function redirectToRoute($route, $params = []
-    ){
+    protected function redirectToRoute(
+        $route,
+        $params = []
+    ) {
         $controllerPrefix = dirname($route);
         $action = basename($route);
 
-        $url = 'Location: index.php?c='.$controllerPrefix.'&a='.$action;
-        foreach ($params as $paramKey => $paramValue){
-            $url.='&'.$paramKey.'='.$paramValue;
+        $url = 'Location: index.php?c=' . $controllerPrefix . '&a=' . $action;
+        foreach ($params as $paramKey => $paramValue) {
+            $url .= '&' . $paramKey . '=' . $paramValue;
         }
         header($url);
     }
@@ -25,12 +27,6 @@ class BaseController
         extract($params);
         $viewPath = "./views/$view.php";
         $layoutPath = "./views/layouts/$layout.php";
-        require_once ($layoutPath);
-    }
-
-    protected function renderViewPDF($view, $params = [])
-    {
-        extract($params);
-        require_once ('views/folhacliente/pdf.php');
+        require_once($layoutPath);
     }
 }

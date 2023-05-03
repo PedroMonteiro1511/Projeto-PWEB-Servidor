@@ -40,7 +40,7 @@ class FolhaClienteController extends \BaseController
             return $this->redirectToRoute('folhacliente/index');
         }
 
-        if($model->estado == \Folha::$Estado_Paga){
+        if ($model->estado == \Folha::$Estado_Paga) {
             return $this->redirectToRoute('folhacliente/index');
         }
 
@@ -56,19 +56,30 @@ class FolhaClienteController extends \BaseController
         return $this->redirectToRoute('folhacliente/index');
     }
 
-    public function pdf($id)
+    public function show($id)
     {
         $model = $this->findModel($id);
+
         if (is_null($model)) {
-            return $this->redirectToRoute('folhacliente/index');
+            return $this->redirectToRoute('folha/index');
         }
 
-        return $this->renderViewPDF('folhacliente/pdf', ['model' => $model]);
+        $empresa = \Empresa::first();
+        $cliente = \User::find([$model->cliente_id]);
+        $funcionario = \User::find([$model->funcionario_id]);
+
+        return $this->renderView('folhacliente/show', [
+            'model' => $model,
+            'empresa' => $empresa,
+            'cliente' => $cliente,
+            'funcionario' => $funcionario
+        ]);
     }
 
     private
-    function findModel($id)
-    {
+        function findModel(
+        $id
+    ) {
 
         try {
             $model = \Folha::find(['id' => $id]);

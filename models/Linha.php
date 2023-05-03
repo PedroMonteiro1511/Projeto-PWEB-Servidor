@@ -6,7 +6,7 @@ class Linha extends \ActiveRecord\Model
 
     static $validates_numericality_of = array(
         array('folha_id', 'greater_than' => 0, 'message' => 'Campo obrigatório!'),
-        array('servico_id', 'greater_than' => 0, 'message' => 'Campo obrigatório!'),
+        array('service_id', 'greater_than' => 0, 'message' => 'Campo obrigatório!'),
         array('quantidade', 'greater_than' => 0, 'message' => 'Campo obrigatório!'),
     );
 
