@@ -57,11 +57,12 @@
                 <?php
             }
             ?>
-
+            
+            <?php if (isset($_SESSION['active_user_role']) && $_SESSION['active_user_role'] == User::$Role_User_Cliente){ ?>
             <li class="nav-item">
                 <a class="nav-link" href="index.php?c=folhacliente&a=index">Minhas Folhas</a>
             </li>
-
+            <?php } ?>
 
         </ul>
     </div>
