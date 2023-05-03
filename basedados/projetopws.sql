@@ -42,7 +42,7 @@ CREATE TABLE `empresa` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `folhasobra`
+-- Estrutura da tabela `folha`
 --
 
 CREATE TABLE `folhasobra` (
@@ -127,7 +127,7 @@ ALTER TABLE `empresa`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `folhasobra`
+-- Índices para tabela `folha`
 --
 ALTER TABLE `folhasobra`
   ADD PRIMARY KEY (`id`),
@@ -173,7 +173,7 @@ ALTER TABLE `empresa`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `folhasobra`
+-- AUTO_INCREMENT de tabela `folha`
 --
 ALTER TABLE `folhasobra`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
@@ -207,7 +207,7 @@ ALTER TABLE `users`
 --
 
 --
--- Limitadores para a tabela `folhasobra`
+-- Limitadores para a tabela `folha`
 --
 ALTER TABLE `folhasobra`
   ADD CONSTRAINT `folhasobra_ibfk_1` FOREIGN KEY (`idCliente`) REFERENCES `users` (`id`),

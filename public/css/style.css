@@ -3,6 +3,17 @@ body{
     background : white;
 }
 
+form {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 40px;
+    box-shadow: 0px 3px 20px #ccc;
+}
+
+.container{
+    margin-top: 20px !important;
+}
+
 /* Css da navBar */
 
 .navbar{
@@ -16,15 +27,12 @@ body{
 
 /* Css do Footer */
 
- footer {
-     position: fixed;
-     left: 0;
-     bottom: 0;
-     width: 100%;
-     background-color: red;
-     color: white;
-     text-align: center;
- }
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+}
 
 /*  Css Geral da Aplicação  */
 
@@ -67,11 +75,4 @@ button {
 
 button:hover {
     background-color: #555;
-}
-
-footer {
-    background-color: #333;
-    color: #fff;
-    padding: 1rem;
-    text-align: center;
 }

@@ -2,7 +2,6 @@
 
 class Auth
 {
-
     public function __construct()
     {
         session_start();
@@ -12,34 +11,42 @@ class Auth
     {
         $user = User::find('one', array('conditions' => "username LIKE '$username' and password LIKE '$password'"));
 
-        if ($user){
+        if ($user) {
 
             $_SESSION['active_user_id'] = $user->id;
-            $_SESSION['active_user_password'] = $user->password;
             $_SESSION['active_user_username'] = $user->username;
-            $_SESSION['active_user_email'] = $user->email;
-            $_SESSION['active_user_telefone'] = $user->telefone;
-            $_SESSION['active_user_nif'] = $user->nif;
-            $_SESSION['active_user_morada'] = $user->morada;
-            $_SESSION['active_user_codpostal'] = $user->codpostal;
-            $_SESSION['active_user_localidade'] = $user->localidade;
+            $_SESSION['active_user_role'] = $user->role;
 
             return true;
-        }
-        else{
+        } else {
             return false;
         }
 
         return false;
     }
 
-    public function isLoggedIn(): bool
+    public static function get_active_user($id)
+    {
+        $user = User::find([$id]);
+
+        return $user->username;
+    }
+
+    public static function isLoggedIn(): bool
     {
         if (isset($_SESSION["active_user_id"])) {
             return true;
         }
 
         return false;
+    }
+
+    public function get_active_role(){
+        if (isset($_SESSION['active_user_role'])){
+            return $_SESSION['active_user_role'];
+        }
+        else
+            return null;
     }
 
     public function logout()

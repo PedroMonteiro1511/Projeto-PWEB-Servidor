@@ -12,11 +12,16 @@ class Service extends \ActiveRecord\Model
 
     static $validates_numericality_of = array(
         array('preco', 'greater_than' => 0,'message' => 'Campo obrigatório!'),
-        array('idiva', 'greater_than' => 0,'message' => 'Campo obrigatório!')
+        array('iva_id', 'greater_than' => 0,'message' => 'Campo obrigatório!')
     );
 
     static $validates_uniqueness_of = array(
         array('referencia', 'message' => 'A Referência já existe!')
+    );
+
+
+    static $belongs_to = array(
+        array('iva')
     );
 
     public function getIvaPercentagemByIdIva($idIva)

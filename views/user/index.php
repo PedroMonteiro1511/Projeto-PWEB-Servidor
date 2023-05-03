@@ -1,69 +1,92 @@
-<section style="margin-top: 2%">
-    <div class="container py-5" style="background-color: lightgray;"> <?php  //TODO Alterar a cor, maybe?  ?>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="card mb-2">
-                    <div class="card-body text-center">
-                        <h5 class="my-3"><?= $_SESSION['active_user_username'] ?></h5>
-                        <img class="rounded-circle mt-1"
-                             width="150px"
-                             src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
+<style>
+    .alert {
+        padding: 20px;
+        background-color: #9d150f;
+        color: white;
+    }
 
+    .closebtn {
+        margin-left: 15px;
+        color: white;
+        font-weight: bold;
+        float: right;
+        font-size: 22px;
+        line-height: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
 
-                    </div>
-                </div>
-            </div>
+    .closebtn:hover {
+        color: black;
+    }
+</style>
+<div class="mt-5">
+    <h2 class="text-left">Users
+        <a href="index.php?c=user&a=create" class="btn btn-success"
+           role="button">Novo</a>
+    </h2>
+
+    <?php
+
+    if (isset($erro_apagar)) {
+        ?>
+
+        <div class="alert">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            <strong>Erro!</strong> <?= $erro_apagar ?>
         </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <p class="mb-0"> <b>Email</b> </p>
-                            </div>
-                            <div class="col-sm-9">
-                                <p class="text-muted mb-0"><?= $_SESSION['active_user_email'] ?></p>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <p class="mb-0"> <b>Telefone</b> </p>
-                            </div>
-                            <div class="col-sm-9">
-                                <p class="text-muted mb-0"><?= $_SESSION['active_user_telefone'] ?></p>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <p class="mb-0"> <b>Morada</b> </p>
-                            </div>
-                            <div class="col-sm-9">
-                                <p class="text-muted mb-0"><?= $_SESSION['active_user_morada'] ?></p>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <p class="mb-0"> <b>Localidade</b> </p>
-                            </div>
-                            <div class="col-sm-9">
-                                <p class="text-muted mb-0"><?= $_SESSION['active_user_localidade'] ?></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
 
-                    <div class="col-md-12">
-                        <div class="card mb-4 mb-md-0">
-                            <a href="index.php?c=user&a=form" class="btn btn-success">Alterar os meus dados!</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <?php
+    }
+
+    ?>
+
+    <h2 class="top-space"></h2>
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table tablestriped">
+                <thead>
+                <th><h3>Id</h3></th>
+                <th><h3>Username</h3></th>
+                <th><h3>E-mail</h3></th>
+                <th><h3>Telefone</h3></th>
+                <th><h3>Morada</h3></th>
+                <th><h3>Código-Postal</h3></th>
+                <th><h3>Localidade</h3></th>
+                <th><h3>Role</h3></th>
+                <th><h3>Gestão</h3></th>
+
+                </thead>
+                <tbody>
+                <?php foreach ($users as $user) { ?>
+                    <?php if ($user->id != $_SESSION['active_user_id']) { ?>
+                        <tr>
+                            <td><?= $user->id ?></td>
+                            <td><?= $user->username ?></td>
+                            <td><?= $user->email ?></td>
+                            <td><?= $user->telefone ?></td>
+                            <td><?= $user->morada ?></td>
+                            <td><?= $user->codpostal ?></td>
+                            <td><?= $user->localidade ?></td>
+                            <td style="color: red"> <?= $user->role ?></td>
+
+                            <td>
+                                <a href="index.php?c=user&a=view&id=<?= $user->id ?>"
+                                   class="btn btn-primary" role="button">Show</a>
+                                <a href="index.php?c=user&a=change&id=<?= $user->id ?>"
+                                   class="btn btn-primary" role="button">Edit</a>
+                                <a href="index.php?c=user&a=delete&id=<?= $user->id ?>"
+                                   class="btn btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    <?php }
+                } ?>
+                </tbody>
+            </table>
         </div>
     </div>
-</section>
+</div>
+
+
+
+

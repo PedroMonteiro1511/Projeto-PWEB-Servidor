@@ -9,29 +9,37 @@ class EmpresaController extends \BaseController
 
     public function __construct()
     {
-        session_start();
+        $author = new \Auth();
+        if (!$author->isLoggedIn()) {
+            return $this->redirectToRoute('auth/login');
+        }
     }
 
     public function index()
     {
-        $empresa = Empresa::find(['id'=>1]);
+        $empresa = Empresa::find([1]);
         return $this->renderView('empresa/index', ['model' => $empresa]);
     }
 
 
-    public function form($id)
+    public function edit($id)
     {
         $empresa = Empresa::find([$id]);
 
         if (is_null($empresa)) {
             return $this->redirectToRoute('site/404'); //error page
         } else {
-            return $this->renderView('empresa/form', ['model' => $empresa]);
+            return $this->renderView('empresa/edit', ['model' => $empresa]);
         }
     }
 
     public function update($id)
     {
+        $author = new \Auth();
+        if (!$author->isLoggedIn()) {
+            return $this->redirectToRoute('auth/login');
+        }
+
         $empresa = Empresa::find([$id]);
 
         $attributes = array(
@@ -54,5 +62,6 @@ class EmpresaController extends \BaseController
             return $this->renderView('site/404');
         }
     }
+
 
 }
