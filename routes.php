@@ -5,6 +5,7 @@ require_once 'controllers/SiteController.php';
 require_once 'controllers/AuthController.php';
 require_once 'controllers/ServiceController.php';
 require_once 'controllers/EmpresaController.php';
+require_once 'controllers/IvasController.php';
 require_once 'controllers/UserController.php';
 require_once 'controllers/FolhaController.php';
 require_once 'controllers/LinhaController.php';
@@ -31,6 +32,15 @@ return [
         'edit' => ['GET', 'EmpresaController', 'edit'],
         'update' => ['POST', 'EmpresaController', 'update'],
     ],
+    'ivas' => [
+        'index' => ['GET', 'IvasController', 'index'],
+        'show' => ['GET', 'IvasController', 'show'],
+        'create' => ['GET', 'IvasController', 'create'],
+        'store' => ['POST', 'IvasController', 'store'],
+        'edit' => ['GET', 'IvasController', 'edit'],
+        'update' => ['POST', 'IvasController', 'update'],
+        'delete' => ['GET', 'IvasController', 'delete'],
+    ],
     'service' => [
         'index' => ['GET', 'ServiceController', 'index'],
         'show' => ['GET', 'ServiceController', 'show'],
@@ -42,6 +52,7 @@ return [
     ],
     'user' => [
         'index' => ['GET|POST', 'UserController', 'index'],
+        'update_profile' => ['GET', 'UserController', 'update_profile'],
         'edit' => ['GET', 'UserController', 'edit'],
         'update' => ['GET|POST', 'UserController', 'update'],
         'view' => ['GET|POST', 'UserController', 'view'],

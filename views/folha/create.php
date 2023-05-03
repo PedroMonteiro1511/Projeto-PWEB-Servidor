@@ -27,8 +27,8 @@
         <input type="hidden" name="idFuncionario" value="<?= $_SESSION['active_user_id'] ?>">
         <div class="form-group">
             <label for="idCliente">Cliente:</label>
-            <select class="form-control" name="idCliente" id="idCliente">
-                <option selected>Selecione um cliente</option>
+            <select class="form-control select2" name="idCliente" id="idCliente">
+                <option disabled selected hidden >Selecione um cliente</option>
                 <?php foreach ($clientes as $cliente): ?>
                     <option value="<?= $cliente->id ?>"> <?= "Username: " . $cliente->username . " | Email: " . $cliente->email; ?></option>
                 <?php endforeach; ?>

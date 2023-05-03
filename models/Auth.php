@@ -32,7 +32,7 @@ class Auth
         return $user->username;
     }
 
-    public function isLoggedIn(): bool
+    public static function isLoggedIn(): bool
     {
         if (isset($_SESSION["active_user_id"])) {
             return true;

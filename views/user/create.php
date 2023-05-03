@@ -1,18 +1,5 @@
 <style>
 
-
-    /* Form styles */
-    form {
-        background-color: #fff;
-        border-radius: 5px;
-        padding: 40px;
-        box-shadow: 0px 3px 20px #ccc;
-    }
-
-    .form-group {
-
-    }
-
     label {
         display: block;
         margin-bottom: 5px;
@@ -79,7 +66,8 @@
             }
             ?>
         </p>
-    </div>
+    </div>   
+
     <div class="form-group">
         <label for="password">Password:</label>
         <input value="<?php if (isset($model)) {
@@ -174,7 +162,8 @@
         <label for="codpostal">Código Postal:</label>
         <input value="<?php if (isset($model)) {
             echo $model->codpostal;
-        } ?>" type="text" id="codpostal" name="codpostal" pattern="[0-9]{4}-[0-9]{3}" placeholder="Código postal" required>
+        } ?>" type="text" id="codpostal" name="codpostal" pattern="[0-9]{4}-[0-9]{3}" placeholder="Código postal"
+               required>
         <p style="color: red"><?php
             if (isset($model->errors)) {
                 if (is_array($model->errors->on('codpostal'))) {
@@ -210,18 +199,14 @@
     <div class="form-group">
         <label for="localidade">Role:</label>
         <select class="form-control" name="role_edit" id="role_edit">
-            <?php if ($_SESSION['active_user_role'] != User::$Role_User_Cliente){ ?>
-                <option value="<?= User::$Role_User_Cliente ?>" <?php if (User::$Role_User_Cliente == $model->role){?>selected <?php } ?>><?= User::$Role_User_Cliente ?></option>
-            <?php
-            }
-            if ($_SESSION['active_user_role'] == User::$Role_User_Admin){
-            ?>
-            <option value="<?= User::$Role_User_Funcionario ?>" <?php if (User::$Role_User_Funcionario == $model->role){?>selected <?php } ?>><?= User::$Role_User_Funcionario ?></option>
-            <option value="<?= User::$Role_User_Admin ?>" <?php if (User::$Role_User_Admin == $model->role){?>selected <?php } ?>><?= User::$Role_User_Admin ?></option>
-<?php } ?>
+            <option value="" disabled hidden selected>Selecionar uma Role</option>
+            <option value="<?= User::$Role_User_Cliente ?>"><?= User::$Role_User_Cliente ?></option>
+            <option value="<?= User::$Role_User_Funcionario ?>"><?= User::$Role_User_Funcionario ?></option>
+            <option value="<?= User::$Role_User_Admin ?>"><?= User::$Role_User_Admin ?></option>
+
         </select>
     </div>
-    <div class="form-group" style="align-items: center">
+    <div class="form-group" style="align-items: center; margin-top: 20px">
         <button type="submit" class="btn btn-primary">Adicionar Funcionário</button>
     </div>
 </form>
