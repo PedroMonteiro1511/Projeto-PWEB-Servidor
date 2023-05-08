@@ -43,7 +43,6 @@ class UserController extends \BaseController
 
     public function store()
     {
-
         $attributes = array(
             'username' => $_POST["username"],
             'password' => $_POST["password"],
@@ -71,6 +70,37 @@ class UserController extends \BaseController
         $this->renderView('user/update_profile', ['model' => $user]);
     }
 
+    public function search()
+    {
+        if (isset($_POST['id']) && $_POST['id'] != "") {
+            $id = $_POST['id'];
+            $user = User::find('all', array('conditions' => "id LIKE '%$id%'"));
+            return $this->renderView('user/index', ['users' => $user, 'idfilter' => $id]);
+        }
+
+        if (isset($_POST['username']) && $_POST['username'] != "") {
+            $username = $_POST['username'];
+            $users = User::find('all', array('conditions' => "username LIKE '%$username%'"));
+
+            if (isset($_POST['role']) && $_POST['role'] != "") {
+                $role = $_POST['role'];
+                $newUsers = User::find('all', array('conditions' => "username LIKE '%$username%' AND role LIKE '%$role%'"));
+                return $this->renderView('user/index', ['users' => $newUsers, 'usernamefilter' => $username, 'rolefilter' => $role]);
+            }
+
+            return $this->renderView('user/index', ['users' => $users, 'usernamefilter' => $username]);
+        }
+
+        if (isset($_POST['role']) && $_POST['role'] != "") {
+            $role = $_POST['role'];
+            $users = User::find('all', array('conditions' => "role LIKE '%$role%'"));
+
+            return $this->renderView('user/index', ['users' => $users, 'rolefilter' => $role]);
+        }
+
+        return $this->redirectToRoute('user/index');
+    }
+
     public function update($id)
     {
         $user = User::find([$id]);
@@ -93,12 +123,17 @@ class UserController extends \BaseController
 
         $user->update_attributes($attributes);
         if ($user->is_valid()) {
-            $user->save();
-            return $this->renderView('user/view', ['model' => $user]);
+            if ($id == $_SESSION['active_user_id']){
+                $user->save();
+                return $this->renderView('user/view', ['model' => $user]);
+            }
+            else{
+                $user->save();
+                return $this->redirectToRoute('user/index');
+            }
         } else {
-            return $this->renderView('user/change', ['model' => $user]);
+            return $this->renderView('user/edit', ['model' => $user]);
         }
-
     }
 
     public function edit($id)

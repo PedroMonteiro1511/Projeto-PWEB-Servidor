@@ -1378,7 +1378,7 @@
 
                         <br>
 
-                        <a href="index.php?c=user&a=change&id=<?= $model->id ?>" class="btn btn-sm btn-block btn-success">
+                        <a href="index.php?c=user&a=edit&id=<?= $model->id ?>" class="btn btn-sm btn-block btn-success">
                             <i class="ace-icon fa fa-plus-circle bigger-120"></i>
                             <span class="bigger-110">Alterar Dados</span>
                         </a>

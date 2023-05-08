@@ -45,22 +45,27 @@
                                 <a class="dropdown-item" href="index.php?c=user&a=index">Gestão de Utilizadores</a>
                             </li>
                             <li>
+                                <a class="dropdown-item" href="index.php?c=iva&a=index">Iva</a>
+                            </li>
+                            <li>
                                 <a class="dropdown-item" href="index.php?c=service&a=index">Serviços</a>
                             </li>
                             <li>
                                 <a class="dropdown-item" href="index.php?c=folha&a=index">Folhas de Obra</a>
                             </li>
-
-
                         </ul>
                     </li>
                     <?php
                 }
                 ?>
 
+                <?php if (isset($_SESSION['active_user_role']) && $_SESSION['active_user_role'] == User::$Role_User_Cliente){ ?>
+
                 <li class="nav-item">
                     <a class="nav-link" href="index.php?c=folhacliente&a=index">Minhas Folhas</a>
                 </li>
+
+                <?php } ?>
 
 
             </ul>
