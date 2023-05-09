@@ -79,7 +79,7 @@
 
     <div class="form-group">
         <label for="iva_id">Iva:</label>
-        <select class="form-control" name="iva_id" id="iva_id">
+        <select class="form-control select2" name="iva_id" id="iva_id">
             <option selected>Selecione um Iva</option>
             <?php foreach ($ivas as $iva): ?>
                 <option value="<?= $iva->id ?>"> <?= $iva->percentagem . "% - " . $iva->descricao; ?></option>

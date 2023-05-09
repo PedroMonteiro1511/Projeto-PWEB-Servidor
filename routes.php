@@ -60,7 +60,8 @@ return [
         'create' => ['GET|POST', 'UserController', 'create'],
         'store' => ['GET|POST', 'UserController', 'store'],
         'delete' => ['GET|POST', 'UserController', 'delete'],
-        'change' => ['GET|POST', 'UserController', 'change']
+        'change' => ['GET|POST', 'UserController', 'change'],
+        'search' => ['GET|POST', 'UserController', 'search']
     ],
     'folha' => [
         'index' => ['GET|POST', 'FolhaController', 'index'],
