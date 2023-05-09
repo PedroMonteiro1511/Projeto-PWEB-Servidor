@@ -68,11 +68,6 @@ class IvaController extends \BaseController
 
     public function update($id)
     {
-        $author = new \Auth();
-        if (!$author->isLoggedIn()) {
-            return $this->redirectToRoute('auth/login');
-        }
-        
         $iva = Iva::find([$id]);
 
         $attributes = array(
