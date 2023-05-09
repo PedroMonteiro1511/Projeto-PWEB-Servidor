@@ -198,7 +198,7 @@
     </div>
     <div class="form-group">
         <label for="localidade">Role:</label>
-        <select class="form-control" name="role_edit" id="role_edit">
+        <select class="form-control" name="role" id="role">
             <option value="" disabled hidden selected>Selecionar uma Role</option>
             <option value="<?= User::$Role_User_Cliente ?>"><?= User::$Role_User_Cliente ?></option>
             <option value="<?= User::$Role_User_Funcionario ?>"><?= User::$Role_User_Funcionario ?></option>

@@ -52,10 +52,12 @@ class UserController extends \BaseController
             'morada' => $_POST["morada"],
             'codpostal' => $_POST["codpostal"],
             'localidade' => $_POST["localidade"],
+            'role' => $_POST["role"],
         );
 
         $user = new User($attributes);
         if ($user->is_valid()) {
+            $user->update_attribute('password', md5($_POST["password"]));
             $user->save();
             return $this->redirectToRoute('user/index');
         } else {
@@ -124,15 +126,36 @@ class UserController extends \BaseController
         $user->update_attributes($attributes);
         if ($user->is_valid()) {
             if ($id == $_SESSION['active_user_id']){
-                $user->save();
-                return $this->renderView('user/view', ['model' => $user]);
+
+                if ($user->password == md5($_POST['password_edit'])){
+                    $user->save();
+                    return $this->renderView('user/view', ['model' => $user]);
+                }
+                else{
+                    $user->update_attribute('password', md5($_POST['password_edit']));
+                    $user->save();
+                    return $this->renderView('user/view', ['model' => $user]);
+                }
+
             }
             else{
-                $user->save();
-                return $this->redirectToRoute('user/index');
+                if ($user->password == md5($_POST['password_edit'])){
+                    $user->save();
+                    return $this->redirectToRoute('user/index');
+                }
+                else{
+                    $user->update_attribute('password', md5($_POST['password_edit']));
+                    $user->save();
+                    return $this->redirectToRoute('user/index');
+                }
             }
         } else {
-            return $this->renderView('user/edit', ['model' => $user]);
+            if ($id == $_SESSION['active_user_id']) {
+                return $this->renderView('user/update_profile', ['model' => $user]);
+            }
+            else{
+                return $this->renderView('user/edit', ['model' => $user]);
+            }
         }
     }
 
@@ -151,6 +174,7 @@ class UserController extends \BaseController
 
         if ($folhas == null) {
             $user->delete();
+            return $this->redirectToRoute('user/index');
         } else {
             $users = User::all();
             return $this->renderView('user/index', ['erro_apagar' => 'Utilizador tem folhas associadas ao seu pefil. Não é possivel apagar!', 'users' => $users]);
