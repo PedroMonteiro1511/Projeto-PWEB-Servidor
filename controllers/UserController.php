@@ -24,8 +24,15 @@ class UserController extends \BaseController
 
     public function view($id) // 
     {
-        $user = User::find([$id]);
-        return $this->renderView('user/view', ['model' => $user]);
+        if ($id == $_SESSION['active_user_id']){
+            $user = User::find([$id]);
+            return $this->renderView('user/view', ['model' => $user]);
+        }
+        else{
+            $user = User::find([$_SESSION['active_user_id']]);
+            return $this->renderView('user/view', ['model' => $user]);
+        }
+
 
     }
 
@@ -125,25 +132,22 @@ class UserController extends \BaseController
 
         $user->update_attributes($attributes);
         if ($user->is_valid()) {
-            if ($id == $_SESSION['active_user_id']){
+            if ($id == $_SESSION['active_user_id']) {
 
-                if ($user->password == md5($_POST['password_edit'])){
+                if ($user->password == md5($_POST['password_edit'])) {
                     $user->save();
                     return $this->renderView('user/view', ['model' => $user]);
-                }
-                else{
+                } else {
                     $user->update_attribute('password', md5($_POST['password_edit']));
                     $user->save();
                     return $this->renderView('user/view', ['model' => $user]);
                 }
 
-            }
-            else{
-                if ($user->password == md5($_POST['password_edit'])){
+            } else {
+                if ($user->password == md5($_POST['password_edit'])) {
                     $user->save();
                     return $this->redirectToRoute('user/index');
-                }
-                else{
+                } else {
                     $user->update_attribute('password', md5($_POST['password_edit']));
                     $user->save();
                     return $this->redirectToRoute('user/index');
@@ -152,8 +156,7 @@ class UserController extends \BaseController
         } else {
             if ($id == $_SESSION['active_user_id']) {
                 return $this->renderView('user/update_profile', ['model' => $user]);
-            }
-            else{
+            } else {
                 return $this->renderView('user/edit', ['model' => $user]);
             }
         }
