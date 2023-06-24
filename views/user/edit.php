@@ -60,7 +60,8 @@
         <input value="<?php if (isset($model)) {
             echo $model->username;
         } ?>" type="text" id="usernameusername_edit" name="username_edit" placeholder="Username" required>
-        <p style="color: red"><?php
+        <p style="color: red">
+            <?php
             if (isset($model->errors)) {
                 if (is_array($model->errors->on('username'))) {
                     foreach ($model->errors->on('username') as $error) {
@@ -78,7 +79,8 @@
         <input value="<?php if (isset($model)) {
             echo $model->password;
         } ?>" type="password" id="password_edit" name="password_edit" placeholder="Password" required>
-        <p style="color: red"><?php
+        <p style="color: red">
+            <?php
             if (isset($model->errors)) {
                 if (is_array($model->errors->on('password'))) {
                     foreach ($model->errors->on('password') as $error) {
@@ -96,7 +98,8 @@
         <input value="<?php if (isset($model)) {
             echo $model->email;
         } ?>" type="email" id="email_edit" name="email_edit" placeholder="Email" required>
-        <p style="color: red"><?php
+        <p style="color: red">
+            <?php
             if (isset($model->errors)) {
                 if (is_array($model->errors->on('email'))) {
                     foreach ($model->errors->on('email') as $error) {
@@ -113,8 +116,10 @@
         <label for="telefone_edit">Telefone:</label>
         <input value="<?php if (isset($model)) {
             echo $model->telefone;
-        } ?>" type="tel" id="telefone_edit" name="telefone_edit" maxlength="9" placeholder="Numero de Telefone" required>
-        <p style="color: red"><?php
+        } ?>" type="tel" id="telefone_edit" name="telefone_edit" maxlength="9" placeholder="Numero de Telefone"
+            required>
+        <p style="color: red">
+            <?php
             if (isset($model->errors)) {
                 if (is_array($model->errors->on('telefone'))) {
                     foreach ($model->errors->on('telefone') as $error) {
@@ -132,7 +137,8 @@
         <input value="<?php if (isset($model)) {
             echo $model->nif;
         } ?>" type="text" id="nif_edit" name="nif_edit" placeholder="Numero NIF" maxlength="9" required>
-        <p style="color: red"><?php
+        <p style="color: red">
+            <?php
             if (isset($model->errors)) {
                 if (is_array($model->errors->on('nif'))) {
                     foreach ($model->errors->on('nif') as $error) {
@@ -150,7 +156,8 @@
         <input value="<?php if (isset($model)) {
             echo $model->morada;
         } ?>" type="text" id="morada_edit" name="morada_edit" placeholder="Morada" required>
-        <p style="color: red"><?php
+        <p style="color: red">
+            <?php
             if (isset($model->errors)) {
                 if (is_array($model->errors->on('morada'))) {
                     foreach ($model->errors->on('morada') as $error) {
@@ -167,8 +174,10 @@
         <label for="codpostal_edit">Código Postal:</label>
         <input value="<?php if (isset($model)) {
             echo $model->codpostal;
-        } ?>" type="text" id="codpostal_edit" name="codpostal_edit" pattern="[0-9]{4}-[0-9]{3}" placeholder="Código postal" required>
-        <p style="color: red"><?php
+        } ?>" type="text" id="codpostal_edit" name="codpostal_edit" pattern="[0-9]{4}-[0-9]{3}"
+            placeholder="Código postal" required>
+        <p style="color: red">
+            <?php
             if (isset($model->errors)) {
                 if (is_array($model->errors->on('codpostal'))) {
                     foreach ($model->errors->on('codpostal') as $error) {
@@ -187,7 +196,8 @@
         <input value="<?php if (isset($model)) {
             echo $model->localidade;
         } ?>" type="text" id="localidade_edit" name="localidade_edit" placeholder="Localidade" required>
-        <p style="color: red"><?php
+        <p style="color: red">
+            <?php
             if (isset($model->errors)) {
                 if (is_array($model->errors->on('localidade'))) {
                     foreach ($model->errors->on('localidade') as $error) {
@@ -203,14 +213,17 @@
     <div class="form-group">
         <label for="role_edit">Role:</label>
         <select class="form-control" name="role_edit" id="role_edit">
-            <?php if ($_SESSION['active_user_role'] != User::$Role_User_Cliente){ ?>
-                <option value="<?= User::$Role_User_Cliente ?>" <?php if (User::$Role_User_Cliente == $model->role){?>selected <?php } ?>><?= User::$Role_User_Cliente ?></option>
+            <?php if ($_SESSION['active_user_role'] != User::$Role_User_Cliente) { ?>
+                <option value="<?= User::$Role_User_Cliente ?>" <?php if (User::$Role_User_Cliente == $model->role) { ?>selected
+                    <?php } ?>><?= User::$Role_User_Cliente ?></option>
                 <?php
             }
-            if ($_SESSION['active_user_role'] == User::$Role_User_Admin){
+            if ($_SESSION['active_user_role'] == User::$Role_User_Admin) {
                 ?>
-                <option value="<?= User::$Role_User_Funcionario ?>" <?php if (User::$Role_User_Funcionario == $model->role){?>selected <?php } ?>><?= User::$Role_User_Funcionario ?></option>
-                <option value="<?= User::$Role_User_Admin ?>" <?php if (User::$Role_User_Admin == $model->role){?>selected <?php } ?>><?= User::$Role_User_Admin ?></option>
+                <option value="<?= User::$Role_User_Funcionario ?>" <?php if (User::$Role_User_Funcionario == $model->role) { ?>selected <?php } ?>><?= User::$Role_User_Funcionario ?>
+                </option>
+                <option value="<?= User::$Role_User_Admin ?>" <?php if (User::$Role_User_Admin == $model->role) { ?>selected
+                    <?php } ?>><?= User::$Role_User_Admin ?></option>
             <?php } ?>
         </select>
     </div>
