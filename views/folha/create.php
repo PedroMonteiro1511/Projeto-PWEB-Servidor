@@ -10,7 +10,7 @@
 
     form {
         box-shadow: none !important;
-        padding-top: 40px;
+        padding: 20px 0px 0px 0px !important;
     }
 </style>
 
@@ -45,14 +45,14 @@
             echo $usernamefilter;
         } ?>">
 
-        <button type="submit">Search</button>
+        <button type="submit" class="">Search</button>
     </form>
 
     <form action="index.php?c=folha&a=store" method="post">
         <input type="hidden" name="idFuncionario" value="<?= $_SESSION['active_user_id'] ?>">
         <div class="form-group">
             <select class="form-control" name="idCliente" id="idCliente">
-                <option disabled selected hidden >Selecione um cliente</option>
+                <option disabled selected hidden>Selecione um cliente</option>
                 <?php foreach ($clientes as $cliente): ?>
                     <option value="<?= $cliente->id ?>"> <?= "Username: " . $cliente->username . " | Email: " . $cliente->email; ?></option>
                 <?php endforeach; ?>

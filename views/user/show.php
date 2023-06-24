@@ -1377,7 +1377,7 @@
                         <div class="space space-4"></div>
 
                         <br>
-
+                        <?php if ($_SESSION['active_user_role'] == User::$Role_User_Admin) { ?>
                         <a href="index.php?c=user&a=edit&id=<?= $model->id ?>" class="btn btn-sm btn-block btn-success">
                             <i class="ace-icon fa fa-plus-circle bigger-120"></i>
                             <span class="bigger-110">Alterar Dados</span>
@@ -1387,6 +1387,7 @@
                             <i class="ace-icon fa fa-envelope-o bigger-110"></i>
                             <span class="bigger-110">Apagar Utilizador</span>
                         </a>
+                        <?php } ?>
                     </div><!-- /.col -->
 
                     <div class="col-xs-12 col-sm-9">

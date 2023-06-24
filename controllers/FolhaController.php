@@ -70,6 +70,7 @@ class FolhaController extends \BaseController
         $clientes = \User::find('all', ['role' => \User::$Role_User_Cliente]);
         $empresa = \Empresa::first();
 
+
         return $this->renderView('folha/create', ['clientes' => $clientes, 'empresa' => $empresa]);
     }
 
@@ -79,11 +80,16 @@ class FolhaController extends \BaseController
             'valorTotal' => 0,
             'ivaTotal' => 0,
             'estado' => Folha::$Estado_Em_Lancamento,
-            'cliente_id' => (int) $_POST["idCliente"],
-            'funcionario_id' => (int) $_POST["idFuncionario"],
+            'funcionario_id' => (int)$_POST["idFuncionario"],
         );
 
+
         $folha = new Folha($attributes);
+
+        if (isset($_POST["idCliente"])) {
+            $folha->update_attribute('cliente_id', $_POST["idCliente"]);
+        }
+
         if ($folha->is_valid() && $folha->save()) {
 
             return $this->redirectToRoute('linha/index', ['id' => $folha->id]);

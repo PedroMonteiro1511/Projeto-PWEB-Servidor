@@ -118,10 +118,12 @@
                             <td>
                                 <a href="index.php?c=user&a=show&id=<?= $user->id ?>"
                                    class="btn btn-primary" role="button">Show</a>
+                                <?php if ($_SESSION['active_user_role'] == User::$Role_User_Admin) { ?>
                                 <a href="index.php?c=user&a=edit&id=<?= $user->id ?>"
                                    class="btn btn-primary" role="button">Edit</a>
                                 <a href="index.php?c=user&a=delete&id=<?= $user->id ?>"
                                    class="btn btn-danger">Delete</a>
+                                <?php } ?>
                             </td>
                         </tr>
                     <?php }

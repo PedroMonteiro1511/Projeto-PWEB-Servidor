@@ -22,6 +22,7 @@ class LinhaController extends \BaseController
     {
         $folha = Folha::find([$id]);
         $empresa = \Empresa::first();
+        $servicos = \Service::find('all');
 
         $cliente_id = $folha->cliente_id;
         $cliente = \User::find([$cliente_id]);
@@ -38,7 +39,7 @@ class LinhaController extends \BaseController
             return $this->redirectToRoute('folha/index');
         }
 
-        return $this->renderView('linha/index', ['folha' => $folha, 'empresa' => $empresa, 'cliente' => $cliente]);
+        return $this->renderView('linha/index', ['folha' => $folha, 'empresa' => $empresa, 'cliente' => $cliente, 'services' => $servicos]);
     }
 
     public function create($id)
@@ -65,7 +66,6 @@ class LinhaController extends \BaseController
 
     public function store()
     {
-
         $folha_id = $_POST['folha_id'];
 
         $attributes = array(
@@ -117,15 +117,15 @@ class LinhaController extends \BaseController
             $folha->save();
 
             return $this->redirectToRoute('linha/index', ['id' => $folha_id]);
-
         } else {
-            $services = \Service::all();
+            $folha = Folha::find([$folha_id]);
+            $empresa = \Empresa::first();
+            $servicos = \Service::find('all');
 
-            return $this->renderView('linha/create', [
-                'model' => $linha,
-                'services' => $services,
-                'folha_id' => $folha_id
-            ]);
+            $cliente_id = $folha->cliente_id;
+            $cliente = \User::find([$cliente_id]);
+
+            return $this->renderView('linha/index', ['folha' => $folha, 'empresa' => $empresa, 'cliente' => $cliente, 'services' => $servicos, 'model' => $linha, 'form' => true]);
         }
     }
 
