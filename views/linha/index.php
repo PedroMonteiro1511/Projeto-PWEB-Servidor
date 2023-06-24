@@ -1,9 +1,12 @@
 <?php
     $open_form = false;
 
+
 if (isset($form)){
     $open_form = $form;
-} ?>
+}
+
+?>
 
 <div class="container">
     <h4 class="display-4 text-center">Folha de obra</h4>
@@ -88,67 +91,76 @@ if (isset($form)){
 
         <div id="add-form-container"></div>
 
+        <!-- create linha -->
+        <section>
+            <form action="index.php?c=linha&a=store" method="post" id="form-appear" <?php if ($open_form == false){ ?> style="display: none" <?php } ?>>
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group mt-2">
+                            <label for="service_id">Serviço:</label>
+                            <select class="form-control" name="service_id" id="service_id">
+                                <option selected>Selecione um Serviço</option>
+                                <?php foreach ($services as $service): ?>
+                                    <option value="<?= $service->id ?>"> <?= $service->referencia . " - " . $service->descricao; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <p style="color: red">
+                            <?php
+                            if (isset($model->errors)) {
+                                if (is_array($model->errors->on('service_id'))) {
+                                    foreach ($model->errors->on('service_id') as $error) {
+                                        echo $error . '<br>';
+                                    }
+                                } else {
+                                    echo $model->errors->on('service_id');
+                                }
+                            }
+                            ?>
+                        </p>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group mt-2">
+                            <label for="referencia">Quantidade:</label>
+                            <input type="number" class="form-control" name="quantidade" id="quantidade" placeholder="Inserir Quantidade"
+                                   value="<?php if (isset($model)) {
+                                       echo $model->quantidade;
+                                   } ?>">
+                            <p style="color: red">
+                                <?php
+                                if (isset($model->errors)) {
+                                    if (is_array($model->errors->on('quantidade'))) {
+                                        foreach ($model->errors->on('quantidade') as $error) {
+                                            echo $error . '<br>';
+                                        }
+                                    } else {
+                                        echo $model->errors->on('quantidade');
+                                    }
+                                }
+                                ?>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" name="folha_id" value="<?= $folha->id ?>">
+
+                <p class="mt-2">
+                    <button type="submit" class="btn btn-primary" name="create">Criar</button>
+                </p>
+
+            </form>
+        </section>
         <p>
-           <a  class="btn btn-success" role="button" id="add-button">+</a>
-            <!-- href="index.php?c=linha&a=create&id=<?= $folha->id ?>"  -->
+            <?php if($open_form): ?>
+                <a  class="btn btn-success" role="button" id="add-button" style="display: none">+</a>
+                <a  class="btn btn-secondary" role="button" id="close-button">X</a>
+            <?php else: ?>
+                <a  class="btn btn-success" role="button" id="add-button">+</a>
+                <a  class="btn btn-secondary" role="button" id="close-button" style="display: none">X</a>
+            <?php endif;?>
         </p>
 
-        <form action="index.php?c=linha&a=store" method="post" id="form-appear" <?php if ($open_form == false){ ?> style="display: none" <?php } ?>>
-            <input type="hidden" name="folha_id" value="<?= $folha->id ?>">
-
-            <div class="form-group mt-4">
-                <label for="service_id">Serviço:</label>
-                <select class="form-control" name="service_id" id="service_id">
-                    <option selected>Selecione um Serviço</option>
-                    <?php foreach ($services as $service): ?>
-                        <option value="<?= $service->id ?>"> <?= $service->referencia . " - " . $service->descricao; ?></option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-            <p style="color: red">
-                <?php
-                if (isset($model->errors)) {
-                    if (is_array($model->errors->on('service_id'))) {
-                        foreach ($model->errors->on('service_id') as $error) {
-                            echo $error . '<br>';
-                        }
-                    } else {
-                        echo $model->errors->on('service_id');
-                    }
-                }
-                ?>
-            </p>
-
-            <div class="form-group mt-4">
-                <label for="referencia">Quantidade:</label>
-                <input type="number" class="form-control" name="quantidade" id="quantidade" placeholder="Inserir Quantidade"
-                       value="<?php if (isset($model)) {
-                           echo $model->quantidade;
-                       } ?>">
-                <p style="color: red">
-                    <?php
-                    if (isset($model->errors)) {
-                        if (is_array($model->errors->on('quantidade'))) {
-                            foreach ($model->errors->on('quantidade') as $error) {
-                                echo $error . '<br>';
-                            }
-                        } else {
-                            echo $model->errors->on('quantidade');
-                        }
-                    }
-                    ?>
-                </p>
-            </div>
-
-            <p class="mt-4">
-                <button type="submit" class="btn btn-primary" name="create">Criar</button>
-                <a href="index.php?c=linha&a=index&id=<?= $folha_id ?>" class="btn btn-secondary" role="button"
-                   aria-pressed="true">Voltar</a>
-            </p>
-
-        </form>
-
-        <hr>
         <div class="mt-4">
             <h5>Total(sem iva):
                 <?= $folha->valortotal ?> €
@@ -158,7 +170,6 @@ if (isset($form)){
             </h4>
         </div>
         <p class="mt-4" style="text-align: center">
-
             <?php if (count($folha->linhas) == 0): ?>
 
                 <a href="index.php?c=folha&a=emitir&id=<?= $folha->id ?>" class="btn btn-dark disabled" role="button"
@@ -177,10 +188,35 @@ if (isset($form)){
 
       var form  = document.getElementById("form-appear");
       var add = document.getElementById("add-button");
+      var closeBtn = document.getElementById("close-button");
 
         add.addEventListener('click', function() {
-            console.log('Button clicked!');
             form.style.display = "block";
+            add.style.display = "none";
+            closeBtn.style.display = "block";
+        });
+
+        closeBtn.addEventListener('click', function() {
+            form.style.display = "none";
+            add.style.display = "block";
+            closeBtn.style.display = "none";
+
         });
     });
 </script>
+
+<style>
+    #add-button{
+        width: 40px;
+        height: 40px;
+        text-align: center;
+    }
+
+    #close-button{
+        width: 40px;
+        height: 40px;
+        text-align: center;
+    }
+
+
+</style>

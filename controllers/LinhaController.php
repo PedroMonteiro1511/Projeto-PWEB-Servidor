@@ -42,7 +42,7 @@ class LinhaController extends \BaseController
         return $this->renderView('linha/index', ['folha' => $folha, 'empresa' => $empresa, 'cliente' => $cliente, 'services' => $servicos]);
     }
 
-    public function create($id)
+    /*public function create($id)
     {
         $folha = Folha::find(['id' => $id]);
         if (is_null($folha)) {
@@ -62,7 +62,7 @@ class LinhaController extends \BaseController
                 'services' => $services
             ]
         );
-    }
+    }*/
 
     public function store()
     {
@@ -86,8 +86,11 @@ class LinhaController extends \BaseController
             $quantidade = $_POST["quantidade"];
 
             //calcular valores
-            $valorLinha = $valorService * $quantidade;
-            $valorIvaLinha = (($valorIvaService * $valorLinha) / 100) + $valorLinha;
+            $valorLinha = Linha::CalcularValor($valorService, $quantidade);
+            $valorIvaLinha = Linha::CalcularValorIva($valorIvaService, $valorLinha);
+
+           // $valorLinha = $valorService * $quantidade;
+           // $valorIvaLinha = (($valorIvaService * $valorLinha) / 100) + $valorLinha;
 
             $linha->update_attributes(
                 array(
@@ -103,7 +106,7 @@ class LinhaController extends \BaseController
             $totalFolha = $folha->valortotal;
             $totalIvaFolha = $folha->ivatotal;
 
-            //adicionar novas linhas ao total
+            //adicionar as novas linhas ao total
             $totalFolha = $totalFolha + $valorLinha;
             $totalIvaFolha = $totalIvaFolha + $valorIvaLinha;
 
@@ -135,14 +138,14 @@ class LinhaController extends \BaseController
 
         if ($model != null) {
 
-            //get line data
+            //obtem informação da linha
             $valor = $model->valor;
             $valorIva = $model->valoriva;
             $folha_id = $model->folha_id;
 
             $result = $model->delete();
 
-            //after delete a line is necessary update folha model
+            //depois de apagar a linha atualiza a folha
             if ($result) {
 
                 $folha = Folha::find(['id' => $folha_id]);

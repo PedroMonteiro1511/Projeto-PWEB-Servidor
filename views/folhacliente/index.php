@@ -46,8 +46,10 @@
                                 <td>
                                     <a href="index.php?c=folhacliente&a=show&id=<?= $folha->id ?>" class="btn btn-primary"
                                         role="button">Show</a>
+                                    <?php if($folha->estado != Folha::$Estado_Paga): ?>
                                     <a href="index.php?c=folhacliente&a=pay&id=<?= $folha->id ?>" class="btn btn-primary"
                                         role="button">Pay</a>
+                                    <?php endif; ?>
                                 </td>
                             </tr>
                         <?php } ?>

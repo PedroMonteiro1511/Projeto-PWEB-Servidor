@@ -88,19 +88,17 @@ class IvaController extends \BaseController
     }
 
     public function delete($id)
-    { {
-            $iva = Iva::find([$id]);
+    {
+        $iva = Iva::find([$id]);
 
-            $servicos = \Service::find(['iva_id' => $iva->id]);
+        $servicos = \Service::find(['iva_id' => $iva->id]);
 
-            if ($servicos == null) {
-                $iva->delete();
-                return $this->redirectToRoute('iva/index');
-            } else {
-                $ivas = Iva::all();
-                return $this->renderView('iva/index', ['erro_apagar' => 'Iva já associado a um serviço. Não é possivel apagar!', 'ivas' => $ivas]);
-            }
+        if ($servicos == null) {
+            $iva->delete();
+            return $this->redirectToRoute('iva/index');
+        } else {
+            $ivas = Iva::all();
+            return $this->renderView('iva/index', ['erro_apagar' => 'Iva já associado a um serviço. Não é possivel apagar!', 'ivas' => $ivas]);
         }
     }
-
 }

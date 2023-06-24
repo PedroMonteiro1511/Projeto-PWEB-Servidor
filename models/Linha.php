@@ -14,4 +14,14 @@ class Linha extends \ActiveRecord\Model
         array('folha'),
         array('service'),
     );
+
+    public static function CalcularValor($valorServico, $quantidade): float|int
+    {
+        return $valorServico * $quantidade;
+    }
+
+    public static function CalcularValorIva($valorIvaService, $valorLinha): float|int
+    {
+        return (($valorIvaService * $valorLinha) / 100) + $valorLinha;
+    }
 }

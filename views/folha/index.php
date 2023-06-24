@@ -58,12 +58,12 @@
 
                                 </td>
                                 <td>
-                                    <a href="index.php?c=user&a=view&id=<?= $folha->cliente_id ?>">
+                                    <a href="index.php?c=user&a=show&id=<?= $folha->cliente_id ?>">
                                         <?= User::getUsernameById($folha->cliente_id) ?>
                                     </a>
                                 </td>
                                 <td>
-                                    <a href="index.php?c=user&a=view&id=<?= $folha->cliente_id ?>">
+                                    <a href="index.php?c=user&a=show&id=<?= $folha->funcionario_id ?>">
                                         <?= User::getUsernameById($folha->funcionario_id) ?>
                                     </a>
                                 </td>
@@ -80,8 +80,6 @@
                                         <?php
                                     endif;
                                     ?>
-
-
                                 </td>
                             </tr>
                         <?php } ?>
