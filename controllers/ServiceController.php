@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use ActiveRecord\RecordNotFound;
+use Exception;
 use Iva;
 use Service;
 
@@ -53,7 +54,7 @@ class ServiceController extends \BaseController
             'referencia' => $_POST["referencia"],
             'descricao' => $_POST["descricao"],
             'preco' => $_POST["preco"],
-            'iva_id' => (int)$_POST["iva_id"],
+            'iva_id' => (int) $_POST["iva_id"],
         );
 
         $service = new Service($attributes);
@@ -93,7 +94,7 @@ class ServiceController extends \BaseController
             'referencia' => $_POST["referencia"],
             'descricao' => $_POST["descricao"],
             'preco' => $_POST["preco"],
-            'iva_id' => (int)$_POST["iva_id"],
+            'iva_id' => (int) $_POST["iva_id"],
         );
 
         $model->update_attributes($attributes);
@@ -117,7 +118,17 @@ class ServiceController extends \BaseController
         $model = $this->findModel($id);
 
         if ($model != null) {
-            $model->delete();
+
+            try {
+                $model->delete();
+
+            } catch (Exception $ex) {
+                $services = Service::all();
+                return $this->renderView('service/index', [
+                    'erro_apagar' => 'Este serviço está associado a uma linha de folha. Não é possivel apagar!',
+                    'services' => $services
+                ]);
+            }
         }
 
         return $this->redirectToRoute('service/index');
