@@ -173,8 +173,11 @@ class UserController extends \BaseController
     {
         $user = User::find([$id]);
 
-        $folhas = \Folha::find(['cliente_id' => $user->id]);
+        $folhas = $user->folhas;
 
+        var_dump($folhas);
+
+/*
         if ($folhas == null) {
             $user->delete();
             return $this->redirectToRoute('user/index');
@@ -182,6 +185,7 @@ class UserController extends \BaseController
             $users = User::all();
             return $this->renderView('user/index', ['erro_apagar' => 'Utilizador tem folhas associadas ao seu pefil. Não é possivel apagar!', 'users' => $users]);
         }
+*/
     }
 
 }

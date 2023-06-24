@@ -99,6 +99,19 @@ class FolhaController extends \BaseController
         }
     }
 
+    public function search()
+    {
+        if (isset($_POST['username']) && $_POST['username'] != "") {
+            $username = $_POST['username'];
+            $users = \User::find('all', array('conditions' => "username LIKE '%$username%'"));
+            $empresa = \Empresa::first();
+
+            return $this->renderView('folha/create', ['clientes' => $users, 'usernamefilter' => $username, 'empresa' => $empresa]);
+        }
+
+        return $this->redirectToRoute('folha/create');
+    }
+
     public function emitir($id)
     {
         $model = $this->findModel($id);

@@ -16,6 +16,9 @@ class Folha extends \ActiveRecord\Model
         array('linhas'),
     );
 
+    static $belongs_to = array(
+        array('user')
+    );
 
 }
 

@@ -98,7 +98,6 @@ class LinhaController extends \BaseController
 
             $linha->save();
 
-
             //obter folha
             $folha = Folha::find(['id' => $folha_id]);
             $totalFolha = $folha->valortotal;

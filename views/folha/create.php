@@ -1,3 +1,19 @@
+<style>
+    .searchnames {
+        font-size: 14px;
+        border: 1px solid #888;
+        border-radius: 5px;
+        padding: 10px;
+        width: 15em;
+        margin: 10px 2px 0 0;
+    }
+
+    form {
+        box-shadow: none !important;
+        padding-top: 40px;
+    }
+</style>
+
 <h4 class="display-4 text-center">Folha de obra</h4>
 <hr>
 <section>
@@ -22,12 +38,20 @@
 <section>
     <h3>Selecionar cliente</h3>
 
-    <form action="index.php?c=folha&a=store" method="post">
+    <form action="index.php?c=folha&a=search" method="POST">
 
+        <input class="searchnames" type="search" id="username" name="username" placeholder="Procurar por username..."
+               title="Type in a name" value="<?php if (isset($usernamefilter)) {
+            echo $usernamefilter;
+        } ?>">
+
+        <button type="submit">Search</button>
+    </form>
+
+    <form action="index.php?c=folha&a=store" method="post">
         <input type="hidden" name="idFuncionario" value="<?= $_SESSION['active_user_id'] ?>">
         <div class="form-group">
-            <label for="idCliente">Cliente:</label>
-            <select class="form-control select2" name="idCliente" id="idCliente">
+            <select class="form-control" name="idCliente" id="idCliente">
                 <option disabled selected hidden >Selecione um cliente</option>
                 <?php foreach ($clientes as $cliente): ?>
                     <option value="<?= $cliente->id ?>"> <?= "Username: " . $cliente->username . " | Email: " . $cliente->email; ?></option>
