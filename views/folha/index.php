@@ -75,12 +75,13 @@
                                         ?>
                                         <a href="index.php?c=linha&a=index&id=<?= $folha->id ?>" class="btn btn-primary"
                                             role="button">Edit</a>
+                                        <a href="index.php?c=folha&a=delete&id=<?= $folha->id ?>"
+                                           class="btn btn-danger">Delete</a>
                                         <?php
                                     endif;
                                     ?>
 
-                                    <a href="index.php?c=folha&a=delete&id=<?= $folha->id ?>"
-                                        class="btn btn-danger">Delete</a>
+
                                 </td>
                             </tr>
                         <?php } ?>

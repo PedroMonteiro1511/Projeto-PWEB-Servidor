@@ -39,12 +39,10 @@
 
     <div class="form-group mt-4">
         <label for="emvigor">Em Vigor:</label>
-        <select class="form-control" name="iva_id" id="iva_id">
-            <?php if ($model->emvigor == 'sim') { ?>
-                <option value="<?= $model->emvigor ?>" selected><?= $model->emvigor; ?> </option>
-            <?php } else { ?>
-                <option value="<?= $model->emvigor ?>"> <?= $model->emvigor; ?></option>
-            <?php } ?>
+        <select class="form-control" id="emvigor" name="emvigor" placeholder="Indicar se está em Vigor">
+            <option value="">Selecionar..</option>
+            <option value="Sim">Sim</option>
+            <option value="Não">Não</option>
         </select>
     </div>
     <p style="color: red">

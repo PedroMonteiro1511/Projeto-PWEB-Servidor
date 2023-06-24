@@ -6,6 +6,13 @@ use Iva;
 
 class IvaController extends \BaseController
 {
+    public function __construct()
+    {
+        $author = new \Auth();
+        if (!$author->isLoggedIn()) {
+            return $this->redirectToRoute('auth/login');
+        }
+    }
 
     public function index()
     {
@@ -14,7 +21,7 @@ class IvaController extends \BaseController
     }
 
 
-    public function show($id)
+    /*public function show($id)
     {
         $iva = Iva::find([$id]);
 
@@ -23,7 +30,7 @@ class IvaController extends \BaseController
         } else {
             return $this->renderView('iva/show', ['model' => $iva]);
         }
-    }
+    }*/
 
     public function create()
     {

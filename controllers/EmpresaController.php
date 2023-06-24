@@ -35,11 +35,6 @@ class EmpresaController extends \BaseController
 
     public function update($id)
     {
-        $author = new \Auth();
-        if (!$author->isLoggedIn()) {
-            return $this->redirectToRoute('auth/login');
-        }
-
         $empresa = Empresa::find([$id]);
 
         $attributes = array(
@@ -59,7 +54,7 @@ class EmpresaController extends \BaseController
                 $empresa->save();
             return $this->redirectToRoute('empresa/index');
         } else {
-            return $this->renderView('site/404');
+            return $this->renderView('empresa/edit', ['model' => $empresa]);
         }
     }
 
