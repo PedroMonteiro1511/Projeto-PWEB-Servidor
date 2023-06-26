@@ -35,7 +35,8 @@ class User extends Model
     static $validates_size_of = array(
         array('telefone', 'minimum' => 9, 'too_short' => 'Número de Telemóvel com formatação incorreta!'),
         array('nif', 'minimum' => 9, 'too_short' => 'Nif com formatação incorreta!'),
-        array('username', 'minimum' => 3, 'too_short' => 'Username tem de ter no mínimo 3 caracteres!')
+        array('username', 'minimum' => 3, 'too_short' => 'Username tem de ter no mínimo 3 caracteres!'),
+        array('nif', 'maximum' => 9, 'too_long' => 'NIF com formatação incorreta! [000000000]'),
     );
 
     static $validates_format_of = array(

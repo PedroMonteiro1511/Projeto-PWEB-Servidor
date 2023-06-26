@@ -116,7 +116,7 @@
         <label for="telefone_edit">Telefone:</label>
         <input value="<?php if (isset($model)) {
             echo $model->telefone;
-        } ?>" type="tel" id="telefone_edit" name="telefone_edit" maxlength="9" placeholder="Numero de Telefone"
+        } ?>" type="number" id="telefone_edit" class="form-control" name="telefone_edit" maxlength="9" placeholder="Numero de Telefone"
             required>
         <p style="color: red">
             <?php
@@ -136,7 +136,7 @@
         <label for="nif_edit">NIF:</label>
         <input value="<?php if (isset($model)) {
             echo $model->nif;
-        } ?>" type="text" id="nif_edit" name="nif_edit" placeholder="Numero NIF" maxlength="9" required>
+        } ?>" type="number" id="nif_edit" name="nif_edit" class="form-control" placeholder="Numero NIF" maxlength="9" required>
         <p style="color: red">
             <?php
             if (isset($model->errors)) {
