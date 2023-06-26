@@ -39,10 +39,10 @@ class ServiceController extends \BaseController
 
     public function create()
     {
-        $ivas = Iva::find(['emvigor' => 'sim']);
+        $ivas = Iva::find('all',['emvigor' => 'sim']);
 
-        if ($ivas != null) {
-            $ivas = $ivas->all(); //obtem ivas para a selectbox da view
+        if ($ivas == null) {
+            $ivas = [];
         }
 
         return $this->renderView('service/create', ['ivas' => $ivas]);
@@ -63,9 +63,9 @@ class ServiceController extends \BaseController
             return $this->redirectToRoute('service/index');
 
         } else {
-            $ivas = Iva::find(['emvigor' => 'sim']);
-            if ($ivas != null) {
-                $ivas = $ivas->all();
+            $ivas = Iva::find('all',['emvigor' => 'sim']);
+            if ($ivas == null) {
+                $ivas = [];
             }
             return $this->renderView('service/create', ['model' => $service, 'ivas' => $ivas]);
         }

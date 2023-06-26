@@ -17,7 +17,7 @@ class EmpresaController extends \BaseController
 
     public function index()
     {
-        $empresa = Empresa::find([1]);
+        $empresa = Empresa::first();
         return $this->renderView('empresa/index', ['model' => $empresa]);
     }
 
