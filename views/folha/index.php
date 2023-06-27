@@ -1,9 +1,69 @@
-<?php ?>
+<style>
+
+    form {
+        padding: 15px !important;
+    }
+
+    .searchnames {
+        font-size: 14px;
+        border: 1px solid #888;
+        border-radius: 5px;
+        padding: 10px;
+        width: 15em;
+        margin: 10px 2px 0 0;
+    }
+
+    .alert {
+        padding: 20px;
+        background-color: #9d150f;
+        color: white;
+    }
+
+    .alert-user {
+        padding: 20px;
+        background-color: #ffffff;
+        color: white;
+    }
+
+    .closebtn {
+        margin-left: 15px;
+        color: white;
+        font-weight: bold;
+        float: right;
+        font-size: 22px;
+        line-height: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .closebtn:hover {
+        color: black;
+    }
+</style>
 <div class="container">
     <div class="mt-5">
         <h2 class="text-left">Folhas de obra
             <a href="index.php?c=folha&a=create" class="btn btn-success" role="button">Novo</a>
         </h2>
+        <br>
+        <form action="index.php?c=folha&a=searchfolhas" method="POST">
+
+            <input class="searchnames" type="search" id="cliente" name="cliente" placeholder="Procurar por cliente..."
+                   title="Type in a name" value="<?php if (isset($usernamefilter)) {
+                echo $usernamefilter;
+            } ?>">
+
+            <select class="searchnames" name="estado" id="estado">
+                <option value="">Todas os estados...</option>
+                <option value="<?= Folha::$Estado_Em_Lancamento ?>" <?php if (isset($estadofilter) && $estadofilter == Folha::$Estado_Em_Lancamento){ ?> selected  <?php } ?>>Em Lançamento</option>
+                <option value="<?= Folha::$Estado_Emitida ?>" <?php if (isset($estadofilter) && $estadofilter == Folha::$Estado_Emitida){ ?> selected  <?php } ?>>Emitida</option>
+                <option value="<?= Folha::$Estado_Paga ?>" <?php if (isset($estadofilter) && $estadofilter == Folha::$Estado_Paga){ ?> selected  <?php } ?>>Paga</option>
+            </select>
+
+            <button type="submit">Search</button>
+        </form>
+        <hr>
+        <br>
         <h2 class="top-space"></h2>
         <div class="row">
             <div class="col-sm-12">

@@ -73,6 +73,7 @@ return [
         'delete' => ['GET', 'FolhaController', 'delete'],
         'emitir' => ['GET', 'FolhaController', 'emitir'],
         'search' => ['GET|POST', 'FolhaController', 'search'],
+        'searchfolhas' => ['GET|POST', 'FolhaController', 'searchfolhas'],
     ],
     'linha' => [
         'index' => ['GET', 'LinhaController', 'index'],

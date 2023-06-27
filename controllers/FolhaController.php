@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use ActiveRecord\RecordNotFound;
 use Folha;
+use User;
 
 class FolhaController extends \BaseController
 {
@@ -18,6 +19,64 @@ class FolhaController extends \BaseController
             return $this->redirectToRoute('site/index');
         }
         return null;
+    }
+
+    public function searchfolhas()
+    {
+        if (isset($_POST['cliente']) && $_POST['cliente'] != ""){
+            $folhas = [];
+            $username = $_POST['cliente'];
+            $users = User::find('all', array('conditions' => "username LIKE '%$username%'"));
+            $estado = "";
+
+            if ($users != null){
+                foreach ($users as $user){
+                    if ($_SESSION['active_user_role'] != User::$Role_User_Admin){
+                        $activeUser = $_SESSION['active_user_id'];
+                        $userFolhas = Folha::find('all',array('conditions' => array('cliente_id = ? AND funcionario_id = ?', $user->id, $activeUser)));
+                    }
+                    else{
+                        $userFolhas = Folha::find('all',array('conditions' => array('cliente_id = ?', $user->id)));
+                    }
+
+                    $folhas = array_merge($folhas, $userFolhas);
+                }
+            }
+
+            if (isset($_POST['estado']) && $_POST['estado'] != ""){
+                $folhas = [];
+                $estado = $_POST['estado'];
+
+                foreach ($users as $user){
+                    if ($_SESSION['active_user_role'] != User::$Role_User_Admin){
+                        $activeUser = $_SESSION['active_user_id'];
+                        $userFolhas = Folha::find('all',array('conditions' => array('cliente_id = ? AND estado = ? AND funcionario_id = ?', $user->id, $estado, $activeUser)));
+                    }
+                    else{
+                        $userFolhas = Folha::find('all',array('conditions' => array('cliente_id = ? AND estado = ?', $user->id, $estado)));
+                    }
+
+                    $folhas = array_merge($folhas, $userFolhas);
+                }
+            }
+
+            return $this->renderView('folha/index', ['folhas' => $folhas, 'usernamefilter' => $username, 'estadofilter' => $estado]);
+        }
+
+        if (isset($_POST['estado']) && $_POST['estado'] != ""){
+            $estado = $_POST['estado'];
+            if ($_SESSION['active_user_role'] != User::$Role_User_Admin){
+                $activeUser = $_SESSION['active_user_id'];
+                $folhas = Folha::find('all', array('conditions' => array('estado = ? AND funcionario_id = ?', $estado, $activeUser)));
+            }
+            else{
+                $folhas = Folha::find('all', array('conditions' => array('estado = ?', $estado)));
+            }
+
+            return $this->renderView('folha/index', ['folhas' => $folhas,'estadofilter' => $estado]);
+        }
+
+        return $this->redirectToRoute('folha/index');
     }
 
     public function index()

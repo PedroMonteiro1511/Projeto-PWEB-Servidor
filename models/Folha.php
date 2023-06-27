@@ -7,7 +7,6 @@ class Folha extends \ActiveRecord\Model
     public static $Estado_Emitida = 'Emitida';
     public static $Estado_Paga = 'Paga';
 
-
     static $validates_numericality_of = array(
         array('cliente_id', 'greater_than' => 0,'message' => 'Campo obrigatório!')
     );
@@ -19,6 +18,8 @@ class Folha extends \ActiveRecord\Model
     static $belongs_to = array(
         array('user'),
     );
+
+
 
 }
 
