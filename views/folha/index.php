@@ -92,14 +92,17 @@
                         </th>
                     </thead>
                     <tbody class="table-group-divider">
-                        <?php foreach ($folhas as $folha) { ?>
+                        <?php foreach ($folhas as $folha) {
+                            $data = date("F j, Y", strtotime($folha->data));
+
+                            ?>
 
                             <tr>
                                 <td>
                                     <?= $folha->id ?>
                                 </td>
                                 <td>
-                                    <?= $folha->data ?>
+                                    <?= $data ?>
                                 </td>
                                 <td>
                                     <?= $folha->valortotal ?>€

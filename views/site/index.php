@@ -111,7 +111,6 @@
 
 </style>
 
-
 <main>
     <section id="hero">
         <h2>Worksheet Tracker - Acompanhe suas Folhas</h2>
