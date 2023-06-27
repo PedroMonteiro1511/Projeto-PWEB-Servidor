@@ -86,5 +86,5 @@ return [
         'pay' => ['GET', 'FolhaClienteController', 'pay'],
         'submitPay' => ['POST', 'FolhaClienteController', 'submitPay'],
         'show' => ['GET', 'FolhaClienteController', 'show'],
-    ]
+    ],
 ];

@@ -44,11 +44,13 @@
                             <li>
                                 <a class="dropdown-item" href="index.php?c=service&a=index">Serviços</a>
                             </li>
-
+                            <?php
+                            if (isset($_SESSION['active_user_role']) && $_SESSION['active_user_role'] == User::$Role_User_Admin){
+                            ?>
                             <li>
                                 <a class="dropdown-item" href="index.php?c=empresa&a=index">Empresa</a>
                             </li>
-
+                            <?php } ?>
                             <li>
                                 <a class="dropdown-item" href="index.php?c=folha&a=index">Folhas de Obra</a>
                             </li>
