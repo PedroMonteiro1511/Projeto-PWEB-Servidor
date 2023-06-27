@@ -53,7 +53,7 @@ class SiteController extends \BaseController
                 $user->update_attribute('password', md5($_POST["password"]));
 
                 if ($user->save()) {
-                    return $this->renderView("auth/login");
+                    return $this->redirectToRoute("auth/login");
                 }
             }
 

@@ -40,7 +40,7 @@ class User extends Model
         array('telefone', 'minimum' => 9, 'too_short' => 'Número de Telemóvel com formatação incorreta! [000000000]'),
         array('nif', 'minimum' => 9, 'too_short' => 'NIF com formatação incorreta! [000000000]'),
         array('nif', 'maximum' => 9, 'too_long' => 'NIF com formatação incorreta! [000000000]'),
-        array('username', 'minimum' => 3, 'too_short' => 'Username tem de ter no mínimo 3 caracteres!')
+        array('username', 'minimum' => 3, 'too_short' => 'Username tem de ter no mínimo 3 caracteres!'),
     );
 
     static $validates_format_of = array(
