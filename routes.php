@@ -16,10 +16,7 @@ return [
     'defaultRoute' => ['GET', 'SiteController', 'index'],
     'site' => [
         'index' => ['GET', 'SiteController', 'index'],
-        'create' => ['GET', 'SiteController', 'create'],
         'signup' => ['GET|POST', 'SiteController', 'signup'],
-
-        'login' => ['GET|POST', 'SiteController', 'login'],
     ],
     'auth' => [
         'index' => ['GET', 'AuthController', 'index'],

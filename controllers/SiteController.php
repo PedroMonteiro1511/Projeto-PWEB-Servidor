@@ -20,12 +20,6 @@ class SiteController extends \BaseController
         $this->renderView("site/index");
     }
 
-    public function create()
-    {
-        $this->redirectToRoute("site/create");
-    }
-
-
     public function signup()
     {
         if (isset($_POST["username"]) && isset($_POST["email"]) && isset($_POST["password"])

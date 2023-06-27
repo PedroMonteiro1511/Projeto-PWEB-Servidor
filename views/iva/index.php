@@ -44,7 +44,7 @@ if (isset($erro_apagar)) {
                                     <?= $iva->id ?>
                                 </td>
                                 <td>
-                                    <?= $iva->percentagem ?>
+                                    <?= $iva->percentagem ?>%
                                 </td>
                                 <td>
                                     <?= $iva->descricao ?>

@@ -13,6 +13,11 @@ class EmpresaController extends \BaseController
         if (!$author->isLoggedIn()) {
             return $this->redirectToRoute('auth/login');
         }
+
+        if ($_SESSION['active_user_role'] != \User::$Role_User_Admin) {
+            return $this->redirectToRoute('site/index');
+        }
+        return  null;
     }
 
     public function index()

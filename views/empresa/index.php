@@ -30,11 +30,6 @@
         <h6><?= $model->capsocial ?> €</h6>
     </h2>
     <br>
-    <h2>Produtos/Serviços</h2>
-    <p>Apresente seus principais produtos ou serviços, com imagens e descrições detalhadas. Destaque os benefícios que seus clientes terão ao adquiri-los.</p>
-    <h2>Depoimentos</h2>
-    <p>Inclua depoimentos de clientes satisfeitos com seus produtos ou serviços. Isso ajuda a construir confiança e credibilidade.</p>
-    <br>
     <h2>Contacto
         <br>
         <h6>☎: <?= $model->telefone ?></h6>

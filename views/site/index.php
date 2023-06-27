@@ -118,10 +118,6 @@
         <p>O Worksheet Tracker é a maneira mais fácil de gerenciar suas tarefas e acompanhar seu progresso. Com nossa interface simples e intuitiva, você pode acompanhar seu trabalho e atingir seus objetivos.</p>
     </section>
     <hr>
-    <section id="about">
-        <h2>Sobre nós</h2>
-        <p>Worksheet Tracker é uma ferramenta poderosa para gerir as suas folhas de obra e acompanhar o seu progresso. A nossa plataforma foi projetada para ser amigável e intuitiva, para que você possa se concentrar em seu trabalho e atingir seus objetivos.</p>
-    </section>
     <div style="display: flex; justify-content: center;">
         <img style="border-radius: 15px; width: 70%; max-width: 800px;" src="public/imgs/imagem-empresa.jpg" alt="Imagem da Empresa">
     </div>

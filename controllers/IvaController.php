@@ -12,6 +12,12 @@ class IvaController extends \BaseController
         if (!$author->isLoggedIn()) {
             return $this->redirectToRoute('auth/login');
         }
+
+        if ($_SESSION['active_user_role'] == \User::$Role_User_Cliente) {
+            return $this->redirectToRoute('site/index');
+        }
+
+        return null;
     }
 
     public function index()
@@ -19,18 +25,6 @@ class IvaController extends \BaseController
         $ivas = Iva::all();
         return $this->renderView('iva/index', ['ivas' => $ivas]);
     }
-
-
-    /*public function show($id)
-    {
-        $iva = Iva::find([$id]);
-
-        if (is_null($iva)) {
-            return $this->redirectToRoute('site/404'); //error page
-        } else {
-            return $this->renderView('iva/show', ['model' => $iva]);
-        }
-    }*/
 
     public function create()
     {
@@ -60,7 +54,7 @@ class IvaController extends \BaseController
         $iva = Iva::find([$id]);
 
         if (is_null($iva)) {
-            return $this->redirectToRoute('site/404');
+            return $this->redirectToRoute('site/index');
         } else {
             return $this->renderView('iva/edit', ['model' => $iva]);
         }

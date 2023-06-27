@@ -10,6 +10,11 @@
             <label for="exampleInputPassword1">Password:</label>
             <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="password">
         </div>
+        <?php if(isset($errorMessage)):?>
+        <p style="color: red">
+            <?= $errorMessage ?>
+        </p>
+        <?php endif;?>
         <button type="submit" class="btn btn-primary mt-4" style="margin-top: 10px;">Login</button>
         <p class="mt-2">
 

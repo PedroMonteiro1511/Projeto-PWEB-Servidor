@@ -15,6 +15,10 @@ class LinhaController extends \BaseController
             return $this->redirectToRoute('auth/login');
         }
 
+        if ($_SESSION['active_user_role'] == \User::$Role_User_Cliente) {
+            return $this->redirectToRoute('site/index');
+        }
+
         return null;
     }
 
@@ -41,28 +45,6 @@ class LinhaController extends \BaseController
 
         return $this->renderView('linha/index', ['folha' => $folha, 'empresa' => $empresa, 'cliente' => $cliente, 'services' => $servicos]);
     }
-
-    /*public function create($id)
-    {
-        $folha = Folha::find(['id' => $id]);
-        if (is_null($folha)) {
-            return $this->redirectToRoute('folha/index');
-        }
-
-        if (!$this->havePermission($folha->funcionario_id)) {
-            return $this->redirectToRoute('folha/index');
-        }
-
-        $services = \Service::all();
-
-        return $this->renderView(
-            'linha/create',
-            [
-                'folha_id' => $id,
-                'services' => $services
-            ]
-        );
-    }*/
 
     public function store()
     {

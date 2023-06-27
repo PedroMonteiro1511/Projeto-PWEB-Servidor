@@ -16,6 +16,10 @@ class ServiceController extends \BaseController
             return $this->redirectToRoute('auth/login');
         }
 
+        if ($_SESSION['active_user_role'] == \User::$Role_User_Cliente) {
+            return $this->redirectToRoute('site/index');
+        }
+
         return null;
     }
 
