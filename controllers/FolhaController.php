@@ -27,7 +27,6 @@ class FolhaController extends \BaseController
 
 
         if ($role == \User::$Role_User_Funcionario) {
-
             $all = Folha::find('all', [
                 'funcionario_id' => $_SESSION['active_user_id'],
             ]);
@@ -73,6 +72,7 @@ class FolhaController extends \BaseController
 
         return $this->renderView('folha/create', ['clientes' => $clientes, 'empresa' => $empresa]);
     }
+
 
     public function store()
     {

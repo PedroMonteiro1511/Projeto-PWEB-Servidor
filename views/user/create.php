@@ -50,155 +50,172 @@
 
 <form action="index.php?c=user&a=store" method="post">
     <div class="form-group">
-        <label for="username">Username:</label>
-        <input value="<?php if (isset($model)) {
+        <label for="inputName">Username:</label>
+        <input type="text" class="form-control" id="inputUsername" aria-describedby="emailHelp" placeholder="Username"
+               name="username" value="<?php if (isset($model)) {
             echo $model->username;
-        } ?>" type="text" id="username" name="username" placeholder="Username" required>
-        <p style="color: red"><?php
-            if (isset($model->errors)) {
-                if (is_array($model->errors->on('username'))) {
-                    foreach ($model->errors->on('username') as $error) {
-                        echo $error . '<br>';
-                    }
-                } else {
-                    echo $model->errors->on('username');
+        } ?>">
+    </div>
+    <p style="color: red">
+        <?php
+        if (isset($model->errors)) {
+            if (is_array($model->errors->on('username'))) {
+                foreach ($model->errors->on('username') as $error) {
+                    echo $error . '<br>';
                 }
+            } else {
+                echo $model->errors->on('username');
             }
-            ?>
-        </p>
-    </div>   
+        }
+        ?>
+    </p>
 
     <div class="form-group">
-        <label for="password">Password:</label>
-        <input value="<?php if (isset($model)) {
-            echo $model->password;
-        } ?>" type="password" id="password" name="password" placeholder="Password" required>
-        <p style="color: red"><?php
-            if (isset($model->errors)) {
-                if (is_array($model->errors->on('password'))) {
-                    foreach ($model->errors->on('password') as $error) {
-                        echo $error . '<br>';
-                    }
-                } else {
-                    echo $model->errors->on('password');
-                }
-            }
-            ?>
-        </p>
-    </div>
-    <div class="form-group">
-        <label for="email">Email:</label>
-        <input value="<?php if (isset($model)) {
+        <label for="inputEmail">Email:</label>
+        <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Email"
+               name="email" value="<?php if (isset($model)) {
             echo $model->email;
-        } ?>" type="email" id="email" name="email" placeholder="Email" required>
-        <p style="color: red"><?php
-            if (isset($model->errors)) {
-                if (is_array($model->errors->on('email'))) {
-                    foreach ($model->errors->on('email') as $error) {
-                        echo $error . '<br>';
-                    }
-                } else {
-                    echo $model->errors->on('email');
-                }
-            }
-            ?>
-        </p>
+        } ?>">
     </div>
+    <p style="color: red">
+        <?php
+        if (isset($model->errors)) {
+            if (is_array($model->errors->on('email'))) {
+                foreach ($model->errors->on('email') as $error) {
+                    echo $error . '<br>';
+                }
+            } else {
+                echo $model->errors->on('email');
+            }
+        }
+        ?>
+    </p>
+
     <div class="form-group">
-        <label for="telefone">Telefone:</label>
-        <input value="<?php if (isset($model)) {
+        <label for="inputTelefone">Telefone:</label>
+        <input type="tel" class="form-control" id="inputEmail" aria-describedby="telefoneHelp" placeholder="Telefone"
+               name="telefone" maxlength="9" value="<?php if (isset($model)) {
             echo $model->telefone;
-        } ?>" type="tel" id="telefone" name="telefone" maxlength="9" placeholder="Numero de Telefone" required>
-        <p style="color: red"><?php
-            if (isset($model->errors)) {
-                if (is_array($model->errors->on('telefone'))) {
-                    foreach ($model->errors->on('telefone') as $error) {
-                        echo $error . '<br>';
-                    }
-                } else {
-                    echo $model->errors->on('telefone');
-                }
-            }
-            ?>
-        </p>
+        } ?>">
     </div>
+    <p style="color: red">
+        <?php
+        if (isset($model->errors)) {
+            if (is_array($model->errors->on('telefone'))) {
+                foreach ($model->errors->on('telefone') as $error) {
+                    echo $error . '<br>';
+                }
+            } else {
+                echo $model->errors->on('telefone');
+            }
+        }
+        ?>
+    </p>
+
     <div class="form-group">
-        <label for="nif">NIF:</label>
-        <input value="<?php if (isset($model)) {
+        <label for="inputNif">Nif:</label>
+        <input type="text" class="form-control" id="inputNif" aria-describedby="nifHelp" placeholder="Nif" name="nif"
+               maxlength="9" value="<?php if (isset($model)) {
             echo $model->nif;
-        } ?>" type="text" id="nif" name="nif" placeholder="Numero NIF" maxlength="9" required>
-        <p style="color: red"><?php
-            if (isset($model->errors)) {
-                if (is_array($model->errors->on('nif'))) {
-                    foreach ($model->errors->on('nif') as $error) {
-                        echo $error . '<br>';
-                    }
-                } else {
-                    echo $model->errors->on('nif');
-                }
-            }
-            ?>
-        </p>
+        } ?>">
     </div>
+    <p style="color: red">
+        <?php
+        if (isset($model->errors)) {
+            if (is_array($model->errors->on('nif'))) {
+                foreach ($model->errors->on('nif') as $error) {
+                    echo $error . '<br>';
+                }
+            } else {
+                echo $model->errors->on('nif');
+            }
+        }
+        ?>
+    </p>
+
     <div class="form-group">
-        <label for="morada">Morada:</label>
-        <input value="<?php if (isset($model)) {
+        <label for="inputMorada">Morada:</label>
+        <input type="text" class="form-control" id="inputEmail" aria-describedby="moradaHelp" placeholder="Morada"
+               name="morada" value="<?php if (isset($model)) {
             echo $model->morada;
-        } ?>" type="text" id="morada" name="morada" placeholder="Morada" required>
-        <p style="color: red"><?php
-            if (isset($model->errors)) {
-                if (is_array($model->errors->on('morada'))) {
-                    foreach ($model->errors->on('morada') as $error) {
-                        echo $error . '<br>';
-                    }
-                } else {
-                    echo $model->errors->on('morada');
-                }
-            }
-            ?>
-        </p>
+        } ?>">
     </div>
+    <p style="color: red">
+        <?php
+        if (isset($model->errors)) {
+            if (is_array($model->errors->on('morada'))) {
+                foreach ($model->errors->on('morada') as $error) {
+                    echo $error . '<br>';
+                }
+            } else {
+                echo $model->errors->on('morada');
+            }
+        }
+        ?>
+    </p>
+
     <div class="form-group">
-        <label for="codpostal">Código Postal:</label>
-        <input value="<?php if (isset($model)) {
+        <label for="inputCodPostal">Código-Postal:</label>
+        <input type="text" class="form-control" id="inputEmail" aria-describedby="codpostalHelp"
+               placeholder="Código-Postal" name="codPostal" maxlength="8" value="<?php if (isset($model)) {
             echo $model->codpostal;
-        } ?>" type="text" id="codpostal" name="codpostal" pattern="[0-9]{4}-[0-9]{3}" placeholder="Código postal"
-               required>
-        <p style="color: red"><?php
-            if (isset($model->errors)) {
-                if (is_array($model->errors->on('codpostal'))) {
-                    foreach ($model->errors->on('codpostal') as $error) {
-                        echo $error . '<br>';
-                    }
-                } else {
-                    echo $model->errors->on('codpostal');
-                }
-            }
-            ?>
-        </p>
-        <small class="form-text text-muted">Format: 1234-567</small>
+        } ?>">
     </div>
+    <p style="color: red">
+        <?php
+        if (isset($model->errors)) {
+            if (is_array($model->errors->on('codpostal'))) {
+                foreach ($model->errors->on('codpostal') as $error) {
+                    echo $error . '<br>';
+                }
+            } else {
+                echo $model->errors->on('codpostal');
+            }
+        }
+        ?>
+    </p>
+
     <div class="form-group">
-        <label for="localidade">Localidade:</label>
-        <input value="<?php if (isset($model)) {
+        <label for="inputLocalidade">Localidade:</label>
+        <input type="text" class="form-control" id="inputLocalidade" aria-describedby="localidadeHelp"
+               placeholder="Localidade" name="localidade" value="<?php if (isset($model)) {
             echo $model->localidade;
-        } ?>" type="text" id="localidade" name="localidade" placeholder="Localidade" required>
-        <p style="color: red"><?php
-            if (isset($model->errors)) {
-                if (is_array($model->errors->on('localidade'))) {
-                    foreach ($model->errors->on('localidade') as $error) {
-                        echo $error . '<br>';
-                    }
-                } else {
-                    echo $model->errors->on('localidade');
-                }
-            }
-            ?>
-        </p>
+        } ?>">
     </div>
+    <p style="color: red">
+        <?php
+        if (isset($model->errors)) {
+            if (is_array($model->errors->on('localidade'))) {
+                foreach ($model->errors->on('localidade') as $error) {
+                    echo $error . '<br>';
+                }
+            } else {
+                echo $model->errors->on('localidade');
+            }
+        }
+        ?>
+    </p>
+
+    <div class="form-group">
+        <label for="inputPassword">Password:</label>
+        <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="password">
+    </div>
+    <p style="color: red">
+        <?php
+        if (isset($model->errors)) {
+            if (is_array($model->errors->on('password'))) {
+                foreach ($model->errors->on('password') as $error) {
+                    echo $error . '<br>';
+                }
+            } else {
+                echo $model->errors->on('password');
+            }
+        }
+        ?>
+    </p>
     <div class="form-group">
         <label for="localidade">Role:</label>
-        <select class="form-control" name="role" id="role">
+        <select class="form-control" name="role" id="role" required>
             <option value="" disabled hidden selected>Selecionar uma Role</option>
             <option value="<?= User::$Role_User_Cliente ?>"><?= User::$Role_User_Cliente ?></option>
             <option value="<?= User::$Role_User_Funcionario ?>"><?= User::$Role_User_Funcionario ?></option>
@@ -207,6 +224,6 @@
         </select>
     </div>
     <div class="form-group" style="align-items: center; margin-top: 20px">
-        <button type="submit" class="btn btn-primary">Adicionar Funcionário</button>
+        <button type="submit" class="btn btn-primary">Adicionar</button>
     </div>
 </form>

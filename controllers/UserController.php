@@ -50,25 +50,39 @@ class UserController extends \BaseController
 
     public function store()
     {
-        $attributes = array(
-            'username' => $_POST["username"],
-            'password' => $_POST["password"],
-            'email' => $_POST["email"],
-            'telefone' => $_POST["telefone"],
-            'nif' => $_POST["nif"],
-            'morada' => $_POST["morada"],
-            'codpostal' => $_POST["codpostal"],
-            'localidade' => $_POST["localidade"],
-            'role' => $_POST["role"],
-        );
+        if (isset($_POST["username"]) && isset($_POST["email"]) && isset($_POST["password"])
+            && isset($_POST["telefone"]) && isset($_POST["nif"]) && isset($_POST["morada"])
+            && isset($_POST["codPostal"]) && isset($_POST["localidade"])) {
 
-        $user = new User($attributes);
-        if ($user->is_valid()) {
-            $user->update_attribute('password', md5($_POST["password"]));
-            $user->save();
-            return $this->redirectToRoute('user/index');
+            //Declarar atributos a passar no modelo user
+            $attributes = array(
+                'username' => $_POST["username"],
+                'password' => $_POST["password"],
+                'email' => $_POST["email"],
+                'telefone' => (int)$_POST["telefone"],
+                'nif' => (int)$_POST["nif"],
+                'morada' => $_POST["morada"],
+                'codpostal' => $_POST["codPostal"],
+                'localidade' => $_POST["localidade"],
+                'role' => $_POST["role"]
+            );
+
+            //criar user
+            $user = new User($attributes);
+
+            //validar
+            if ($user->is_valid()) {
+                $user->update_attribute('password', md5($_POST["password"]));
+
+                if ($user->save()) {
+                    return $this->redirectToRoute('user/index');
+                }
+            }
+
+            return $this->renderView("user/create", ['model' => $user]);
+
         } else {
-            return $this->renderView('user/create', ['model' => $user]);
+            return $this->renderView("user/create");
         }
     }
 
@@ -173,7 +187,7 @@ class UserController extends \BaseController
     {
         $user = User::find([$id]);
 
-        $folhas = $user->folhas;
+        $folhas = \Folha::find('all', ['cliente_id' => $user->id]);
 
         if ($folhas == null) {
             $user->delete();

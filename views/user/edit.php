@@ -134,9 +134,9 @@
     </div>
     <div class="form-group">
         <label for="nif_edit">NIF:</label>
-        <input value="<?php if (isset($model)) {
+        <input type="number" class="form-control" id="inputNif" aria-describedby="nifHelp" placeholder="Nif" name="nif_edit" value="<?php if (isset($model)) {
             echo $model->nif;
-        } ?>" type="text" id="nif_edit" name="nif_edit" placeholder="Numero NIF" maxlength="9" required>
+        } ?>">
         <p style="color: red">
             <?php
             if (isset($model->errors)) {

@@ -11,6 +11,10 @@ class User extends Model
 
     public static $table_name = 'users';
 
+    static $has_many = array(
+        array('folhas'),
+    );
+
     static $validates_presence_of = array(
         array('username', 'message' => 'Invalido Username'),
         array('email', 'message' => 'Inválido Email'),
@@ -22,7 +26,7 @@ class User extends Model
 
     static $validates_numericality_of = array(
         array('telefone', 'greater_than' => 0, 'message' => 'Inválido Número'),
-        array('nif', 'greater_than' => 0, 'message' => 'Inválido Nif')
+        array('nif', 'greater_than' => 0, 'message' => 'NIF Inválido'),
     );
 
     static $validates_uniqueness_of = array(
@@ -33,8 +37,9 @@ class User extends Model
     );
 
     static $validates_size_of = array(
-        array('telefone', 'minimum' => 9, 'too_short' => 'Número de Telemóvel com formatação incorreta!'),
-        array('nif', 'minimum' => 9, 'too_short' => 'Nif com formatação incorreta!'),
+        array('telefone', 'minimum' => 9, 'too_short' => 'Número de Telemóvel com formatação incorreta! [000000000]'),
+        array('nif', 'minimum' => 9, 'too_short' => 'NIF com formatação incorreta! [000000000]'),
+        array('nif', 'maximum' => 9, 'too_long' => 'NIF com formatação incorreta! [000000000]'),
         array('username', 'minimum' => 3, 'too_short' => 'Username tem de ter no mínimo 3 caracteres!')
     );
 
